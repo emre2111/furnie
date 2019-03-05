@@ -1,0 +1,15 @@
+<%= form_tag product_path(product_category: params[:product_category], methode: :get do %>
+<%= label_tag(:q, "Category") %>
+<%= select_tag "Category", options_for_select(Product.product_category, params[:product_category]) %>
+<%= submit_tag "Search" %>
+<% end %>
+<%= form_tag product_path(style: params[:style], methode: :get do %>
+<%= label_tag(:q, "Style") %>
+<%= select_tag "Style", options_for_select(Product.style, params[:style]) %>
+<%= submit_tag "Search" %>
+<% end %>
+<%= form_tag product_path(material: params[:material], methode: :get do %>
+<%= label_tag(:q, "Material") %>
+<%= select_tag "Material", options_for_select(Product.material, params[:material]) %>
+<%= submit_tag "Search" %>
+<% end %>
