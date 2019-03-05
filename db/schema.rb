@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_161852) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.string "state"
+    t.string "state", default: "pending"
     t.date "starts_at"
     t.date "ends_at"
     t.string "product_sku"
