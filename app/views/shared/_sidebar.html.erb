@@ -1,15 +1,17 @@
-<%= form_tag products_path, method: :get do %>
-  <%= label_tag(:product_category, "Category") %>
-  <%= select_tag :product_category, options_for_select(Product.pluck(:product_category)) %>
-  <%= submit_tag "Search" %>
-<% end %>
-<%= form_tag products_path do %>
-  <%= label_tag(:style, "Style") %>
-  <%= select_tag :style, options_for_select(Product.pluck(:style)) %>
-  <%= submit_tag "Search" %>
-<% end %>
+<div class="conteiner">
+  <%= form_tag products_path, method: :get do %>
+    <%= label_tag(:product_category, "Category") %>
+    <%= select_tag :product_category, options_for_select(Product.pluck(:product_category)) %>
+    <%= submit_tag "Search" %>
+  <% end %>
   <%= form_tag products_path do %>
-  <%= label_tag(:material, "Material") %>
-  <%= select_tag :material, options_for_select(Product.pluck(:material)) %>
-  <%= submit_tag "Search" %>
-<% end %>
+    <%= label_tag(:style, "Style") %>
+    <%= select_tag :style, options_for_select(Product.pluck(:style)) %>
+    <%= submit_tag "Search" %>
+  <% end %>
+    <%= form_tag products_path do %>
+    <%= label_tag(:material, "Material") %>
+    <%= select_tag :material, options_for_select(Product.pluck(:material)) %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
