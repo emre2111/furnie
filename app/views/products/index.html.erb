@@ -1,0 +1,14 @@
+<div class="container">
+ <div class="sidebar">
+   <p>Search forms go here</p>
+ </div>
+
+ <div class="products-container">
+  <h1>Test</h1>
+  <% @products.each do |product| %>
+    <%= product.name %>
+    <%#= render 'shared/card', product: product %>
+  <% end %>
+ </div>
+
+</div>
