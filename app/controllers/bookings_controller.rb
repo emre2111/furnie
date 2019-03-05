@@ -5,9 +5,9 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
-    @booking.starts_at = Date.today + 1
+    @booking.starts_at = Date.today
     if @booking.save
-      redirect_to products_path
+      redirect_to booking_products_path(@booking)
     else
       flash[:alert] = "please try again"
       redirect_to root_path
@@ -17,6 +17,17 @@ class BookingsController < ApplicationController
   def total_price
     duration = ends_at - starts_at
     duration.to_i * @product.price_in_cents
+  end
+
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.update(booking_params)
+    flash[:notice] = 'fuck you'
+    redirect_to booking_products_path(@booking)
   end
 
   private

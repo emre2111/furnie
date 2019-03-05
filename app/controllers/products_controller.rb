@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+    @booking = Booking.find(params[:booking_id])
     @products = Product.all
     #For Filter Sidebar
     @products = @products.joins(rooms: :product_rooms).where(rooms: { name: params[:name] }) if params[:name].present?
@@ -7,7 +8,7 @@ class ProductsController < ApplicationController
     @products = @products.where(style: params[:style]) if params[:style].present?
     @products = @products.where(material: params[:material]) if params[:material].present?
   end
-
+  
   def show
     @product = Product.find(params[:id])
   end

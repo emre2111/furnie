@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="form">
+  <div class="form form-inline">
     <%= simple_form_for(@booking) do |f| %>
-      <%= f.input :ends_at, as: :date %>
-      <%= f.button :submit %>
+      <%= f.input :ends_at, as: :date, label: "Until when will you need the furnitures?" %>
+      <%= f.button :submit, "find furnitures"%>
     <% end %>
   </div>
 </div>
