@@ -1,15 +1,21 @@
-<%= form_tag products_path, method: :get do %>
+<%= form_tag booking_products_path(@booking), method: :get do %>
   <%= label_tag(:product_category, "Category") %>
   <%= select_tag :product_category, options_for_select(Product.pluck(:product_category)) %>
   <%= submit_tag "Search" %>
 <% end %>
-<%= form_tag products_path do %>
+<%= form_tag booking_products_path(@booking) do %>
   <%= label_tag(:style, "Style") %>
   <%= select_tag :style, options_for_select(Product.pluck(:style)) %>
   <%= submit_tag "Search" %>
 <% end %>
-  <%= form_tag products_path do %>
+  <%= form_tag booking_products_path(@booking) do %>
   <%= label_tag(:material, "Material") %>
   <%= select_tag :material, options_for_select(Product.pluck(:material)) %>
   <%= submit_tag "Search" %>
 <% end %>
+<div class="form form-inline">
+  <%= simple_form_for(@booking) do |f| %>
+    <%= f.input :ends_at, as: :date, label: "Change your dates" %>
+    <%= f.button :submit, "Change your dates" %>
+  <% end %>
+</div>
