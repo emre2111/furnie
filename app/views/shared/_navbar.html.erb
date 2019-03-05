@@ -1,7 +1,8 @@
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo.png", height: 50 %>
+    <p id="name">furnie</p>
+    <%#= image_tag "logo.png", height: 50 %>
   <% end %>
 
   <!-- Right Navigation -->
@@ -12,7 +13,10 @@
       <!-- Links when logged in -->
       <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%#= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "#", class: "cart" do %>
+        <%= image_tag "shopping-cart.svg", height: 30 %>
+      <% end %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
