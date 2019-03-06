@@ -1,3 +1,7 @@
+.card-container {
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 .card-category {
   background-size: cover;
   background-position: center;
@@ -10,8 +14,7 @@
   font-weight: lighter;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin-bottom: 23px;
+  // box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
 }
 
@@ -39,4 +42,9 @@
 
 .product-desc {
   color: #292D33;
+  margin-left: 25px;
+}
+
+.product-desc h4 {
+  margin-bottom: 0;
 }
