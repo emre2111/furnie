@@ -1,4 +1,6 @@
 class BookingsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show, :create]
+
   def show
     @booking = Booking.find(params[:id])
   end
@@ -9,7 +11,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to booking_products_path(@booking)
     else
-      flash[:alert] = "please try again"
+      flash[:alert] = "Please try again"
       redirect_to root_path
     end
   end
