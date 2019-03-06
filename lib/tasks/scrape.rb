@@ -1,10 +1,10 @@
 require 'nokogiri'
 require 'open-uri'
 
-def scraper
+def scraper(material, style)
 
   outputs = []
-  url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/'
+  url = 'hhttps://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/3-sitzer/?material=#{material}&styleFilter=#{style}'
 
   html_file = open(url).read
   doc = Nokogiri::HTML(html_file)
@@ -24,5 +24,3 @@ def scraper
   return outputs
 
 end
-
-p scraper
