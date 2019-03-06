@@ -10,8 +10,8 @@ def scraper
   doc = Nokogiri::HTML(html_file)
   doc.search('.article-tile__wrap').each do |product|
 
-    name = product.search('.article-tile__name').first.text
-    price_cents = product.search('.article__price-wrap .article__price').first.text
+    name = product.search('.article-tile__name').first.text.split[1]
+    price_cents = product.search('.article__price-wrap .article__price').first.text.split[0]
     photo = product.search('.article-tile__image').first['data-echo']
 
     outputs << {
