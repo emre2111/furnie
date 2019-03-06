@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @products = @products.where(style: params[:style]) if params[:style].present?
     @products = @products.where(material: params[:material]) if params[:material].present?
   end
-  
+
   def show
     @product = Product.find(params[:id])
   end
