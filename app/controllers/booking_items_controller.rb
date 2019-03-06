@@ -1,21 +1,23 @@
 class BookingItemsController < ApplicationController
   def create
-    @booking = Booking.find(params[:booking])
-    @product = Product.find(params[:product])
+    @booking = Booking.find(params[:booking_id])
+    @product = Product.find(params[:product_id])
     @booking_item = BookingItem.new(booking_item_params)
-    # @item = Item.find(params[:product_id])
+    # ToDo - find only available item
+    @item = Item.where(product_id: params[:product_id]).first
     @booking_item.item = @item
     if @booking_item.save
-      redirect_to booking_products_path(@booking)
+      redirect_to booking_product_path(@booking, @product)
+      flash[:notice] = "Item added to your cart"
     else
       flash[:alert] = "please try again"
-      render
+      render :create
     end
   end
 
   private
 
   def booking_item_params
-    params.require(:booking_item).permit(:booking_id, :item_id)
+    params.permit(:booking_id)
   end
 end
