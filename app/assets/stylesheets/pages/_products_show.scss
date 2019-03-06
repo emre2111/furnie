@@ -16,3 +16,16 @@
   box-shadow: 0 0 3px rgba(0,0,0,0.2);
   position: sticky;
 }
+
+.product-desc {
+  margin-top: 30px;
+}
+
+.btn-primary {
+  border-radius: 5px;
+  background-color: #1BBB99;
+  border: none;
+  &:hover {
+    background-color: #218A78;
+  }
+}
