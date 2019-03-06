@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
   def update
     @booking = Booking.find(params[:id])
     @booking.update(booking_params)
-    flash[:notice] = 'fuck you'
+    flash[:notice] = 'The date has been changed.'
     redirect_to booking_products_path(@booking)
   end
 

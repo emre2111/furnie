@@ -20,7 +20,7 @@
 <% end %>
 <div class="form form-inline">
   <%= simple_form_for(@booking) do |f| %>
-    <%= f.input :ends_at, as: :date, label: "Change your dates" %>
+    <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
     <%= f.button :submit, "Change your dates" %>
   <% end %>
 </div>
