@@ -5,10 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+require './lib/tasks/scrape'
 
 puts 'Cleaning database...'
-
 
 ProductRoom.destroy_all
 puts 'Creating product rooms'
@@ -19,7 +18,10 @@ puts 'Creating products...'
 Item.destroy_all
 puts 'Creating items...'
 
-############################     Table     #######################
+Room.destroy_all
+puts 'Creating rooms'
+
+################################     Table     #######################
 tables = []
 url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
 scraper(url).each do |product|
@@ -30,11 +32,12 @@ scraper(url).each do |product|
   photo:                product[:photo],
   style:                'modern',
   material:             'wood',
-  product_category:     'table',
+  category:             'table',
   price_cents:          product[:price_cents]
   }
 end
 Product.create!(tables)
+
 
 ############################     Chairs     #######################
 chairs = []
@@ -47,17 +50,12 @@ scraper(url).each do |product|
   photo:                product[:photo],
   style:                'modern',
   material:             'textile',
-  product_category:     'chair',
+  category:             'chair',
   price_cents:          product[:price_cents]
   }
-  
-Room.destroy_all
-puts 'Creating rooms'
-
-10.times do
-
 end
 Product.create!(chairs)
+
 
 ############################     Sofa     #######################
 sofas = []
@@ -70,11 +68,13 @@ scraper(url).each do |product|
   photo:                product[:photo],
   style:                'modern',
   material:             'textile',
-  product_category:     'sofa',
+  category:             'sofa',
   price_cents:          product[:price_cents]
   }
 end
 Product.create!(sofas)
+
+
 
 ############################     Beds     #######################
 beds = []
@@ -87,18 +87,13 @@ scraper(url).each do |product|
   photo:                product[:photo],
   style:                'modern',
   material:             'textile',
-  product_category:     'bed',
+  category:             'bed',
   price_cents:          product[:price_cents]
   }
 end
+
 Product.create!(beds)
 
-
-
-
-10.times do
-  Item.create({ product_id: Product.find_by(sku: '2846467450').id})
-end
 
 rooms_attributes = [
   # some beds
@@ -118,14 +113,14 @@ rooms_attributes = [
 
 Room.create!(rooms_attributes)
 
-Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'kitchen')
-Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'living room')
-Product.find_by(name: 'FRANCOIS').rooms << Room.find_by(name: 'other')
+# Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'kitchen')
+# Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'living room')
+# Product.find_by(name: 'FRANCOIS').rooms << Room.find_by(name: 'other')
 
 
-Product.find_by(name: 'MJOELVIK').rooms << Room.find_by(name: 'bedroom')
-Product.find_by(name: 'LEIRVIK').rooms << Room.find_by(name: 'bedroom')
-Product.find_by(name: 'DELAKTIG').rooms << Room.find_by(name: 'bedroom')
-Product.find_by(name: 'HEMNES').rooms << Room.find_by(name: 'bedroom')
+# Product.find_by(name: 'MJOELVIK').rooms << Room.find_by(name: 'bedroom')
+# Product.find_by(name: 'LEIRVIK').rooms << Room.find_by(name: 'bedroom')
+# Product.find_by(name: 'DELAKTIG').rooms << Room.find_by(name: 'bedroom')
+# Product.find_by(name: 'HEMNES').rooms << Room.find_by(name: 'bedroom')
 
 puts 'Finished!'
