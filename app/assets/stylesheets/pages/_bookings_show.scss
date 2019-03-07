@@ -1,0 +1,35 @@
+.booking-flex {
+  display: flex;
+}
+
+.booking-flex-item {
+  flex: 0 0 70%;
+}
+
+.booking-item-container {
+  display: flex;
+  justify-content: space-around;
+  height: 30vh;
+}
+
+.show-photo-container {
+  flex: 0 0 30%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.show-desc {
+  flex: 0 0 70%;
+}
+
+#cart-header {
+
+}
+
+.item-desc {
+  margin-left: 50px;
+}
+
+.payment-detail {
+  font-weight: lighter;
+}
