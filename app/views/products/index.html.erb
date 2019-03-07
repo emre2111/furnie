@@ -4,7 +4,7 @@
  </div>
 
  <div class="products-container">
-  <h1>All products</h1>
+  <h1>Furniture available for rent</h1>
   <% @products.each do |product| %>
     <%= render 'shared/card', product: product, booking: @booking %>
   <% end %>
