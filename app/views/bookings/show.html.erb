@@ -1,3 +1,33 @@
-<%# @booking.booking_items.each do |booking_item| %>
-<%#= booking_item.product.name %>
-<%# end %>
+<div class="container">
+  <h4 id="cart-header">Your shopping cart</h4>
+  <hr>
+  <div class="booking-flex">
+    <div class="booking-flex-item">
+      <% @items.each do |item| %>
+        <div class="booking-item-container">
+          <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
+            <div class="show-desc">
+              <div class="item-desc">
+                <strong><%= item.product.name %></strong><br>
+                <p>some description here</p><br>
+                <%= humanized_money_with_symbol(item.product.price) %>
+              </div>
+            </div>
+        </div>
+        <hr>
+      <% end %>
+    </div>
+
+    <div class="payment-sidebar">
+      <h4>Order overview</h4>
+      <div class="payment-detail">
+        <p>Subtotal</p>
+        <p>Shipping fee</p>
+        <hr>
+        <strong><p>Total</p></strong>
+        <%= button_to "Rent now", "#", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+
+</div>
