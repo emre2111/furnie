@@ -45,7 +45,7 @@ url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?materia
 scraper(url).each do |product|
   chairs <<  {
   name:                 product[:name],
-  sku:                  '17927638490',
+  sku:                  '1384759290',
   stock:                10,
   photo:                product[:photo],
   style:                'modern',
@@ -63,7 +63,7 @@ url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/
 scraper(url).each do |product|
   sofas <<  {
   name:                 product[:name],
-  sku:                  '1948292030',
+  sku:                  '1895301750',
   stock:                10,
   photo:                product[:photo],
   style:                'modern',
@@ -82,7 +82,7 @@ url = 'https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/bettgestel
 scraper(url).each do |product|
   beds <<  {
   name:                 product[:name],
-  sku:                  '17927638490',
+  sku:                  '1489375920',
   stock:                10,
   photo:                product[:photo],
   style:                'modern',
