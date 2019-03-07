@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
     @products = @products.where(style: params[:style]) if params[:style].present? unless params[:style] == "all"
     @products = @products.where(material: params[:material]) if params[:material].present? unless params[:material] == "all"
 
+    #pagination
     order_by_price(params[:order_by_price])
     order_by_name(params[:order_by_name])
     order_by_category(params[:order_by_category])

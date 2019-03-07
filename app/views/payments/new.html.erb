@@ -1,17 +1,21 @@
-<h4>Purchase</h4>
-<%= form_tag booking_payments_path(@booking) do %>
-  <article>
-    <label class="amount">
-      <span>Amount: <%= humanized_money_with_symbol(@booking.total_amount) %></span>
-    </label>
-  </article>
+<div class="container">
+  <h4>Purchase</h4>
+  <%= form_tag booking_payments_path(@booking) do %>
+    <article>
+      <label class="amount">
+        <span>Amount: <%= humanized_money_with_symbol(@booking.total_amount) %></span>
+      </label>
+    </article>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-name="Furniture rental" #name of product?
-    data-email="<%= current_user.email %>"
-    data-description="Renting furniture until <%= @booking.ends_at %>"
-    data-amount="<%= @booking.total_amount_cents %>"
-    data-currency="<%= @booking.total_amount.currency %>">
-  </script>
-<% end %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-name="Furnie - Furniture Rental"
+      data-email="<%= current_user.email %>"
+      data-description="Renting furniture until <%= @booking.ends_at %>"
+      data-amount="<%= @booking.total_amount_cents %>"
+      data-currency="<%= @booking.total_amount.currency %>">
+    </script>
+  <% end %>
+
+  <%#= link_to "Back", booking_product_path(@booking), class: "btn btn-ghost" %>
+</div>
