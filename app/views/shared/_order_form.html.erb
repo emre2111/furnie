@@ -1,0 +1,28 @@
+<%= form_tag booking_products_path(@booking), method: :get do |f| %>
+  <div class="order-form-tag">
+    <div class="label-tag order-tag">
+      <%= label_tag(:order_by_price, "Order by Price") %>
+    </div>
+    <div class="form-tag order-tag">
+      <%= select_tag('order_by_price', options_for_select(["No", "lowest to highest", "highest to lowest"], params[:order_by_price])) %>
+    </div>
+  </div>
+  <div class="order-form_tag">
+    <div class="label-tag order-tag">
+      <%= label_tag(:order_by_name, "Name") %>
+    </div>
+    <div class="form-tag order-tag">
+      <%= select_tag(:order_by_name, options_for_select(["No", "A..Z", "Z..A"], params[:order_by_name])) %></div>
+  </div>
+  <div class="order-form_tag">
+    <div class="label-tag order-tag">
+      <%= label_tag(:order_by_category, "Category") %>
+    </div>
+    <div class="form-tag order-tag">
+      <%= select_tag(:order_by_category, options_for_select(["No", "A..Z", "Z..A"], params[:order_by_category])) %>
+    </div>
+  </div>
+  <div class="order-submit_tag order-tag">
+    <%= submit_tag("filter") %>
+  </div>
+<% end %>
