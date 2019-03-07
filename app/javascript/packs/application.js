@@ -1,7 +1,5 @@
 import "bootstrap";
-import "plugins/flatpickr";
-import  { sidebar }  from "./event-sidebar";
+import "../plugins/flatpickr";
 import  { order }  from "./event-order";
-sidebar()
-order()
+// order()
 

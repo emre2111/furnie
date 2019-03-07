@@ -14,10 +14,10 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+
+    <%= yield(:after_js) %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-
     <%= render 'shared/footer' %>
-    <%= yield(:after_js) %>
   </body>
 </html>
