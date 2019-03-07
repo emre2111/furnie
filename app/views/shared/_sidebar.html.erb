@@ -23,7 +23,7 @@
 
       <div class="form-tag room-category">
         <div class="label_tag">
-          <%= label_tag(:q, "Room category:") %>
+          <%= label_tag(:product_room, "Room category:") %>
         </div>
         <div class="select_tag">
           <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
@@ -31,7 +31,7 @@
       </div>
       <div class="form-tag furniture-category">
         <div class="label_tag">
-          <%= label_tag(:q, "Furniture category:") %>
+          <%= label_tag(:category, "Furniture category:") %>
         </div>
         <div class="select_tag">
           <%= select_tag :category, options_for_select(category_options.sort, params[:category]) %>
@@ -39,7 +39,7 @@
       </div>
       <div class="form-tag style">
         <div class="label_tag">
-          <%= label_tag(:q, "Style:") %>
+          <%= label_tag(:style, "Style:") %>
         </div>
         <div class="select_tag">
           <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %>
@@ -47,7 +47,7 @@
       </div>
       <div class="form-tag material">
         <div class="label_tag">
-          <%= label_tag(:q, "Material:") %>
+          <%= label_tag(:material, "Material:") %>
         </div>
         <div class="select_tag">
           <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %>
