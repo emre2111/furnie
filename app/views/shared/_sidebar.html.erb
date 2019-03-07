@@ -1,26 +1,61 @@
-<%= form_tag booking_products_path(@booking), method: :get do %>
-  <%= label_tag(:name, "Room") %>
-  <%= select_tag :name, options_for_select(Room.pluck(:name)) %>
-  <%= submit_tag "Search" %>
+<%#= simple_form_for :search, method: :get do |f| %> <%#= add remote = true for AJAX %>
+  <%#= f.select :product_room, collection: Room.pluck(:name).uniq.sort, selected:  params[:search][:product_room] || "kitchen" %>
+  <%#= f.select :category, collection: Product.pluck(:category).uniq.sort%>
+  <%#= f.select :style, collection: Product.pluck(:style).uniq.sort %>
+  <%#= f.select :material, collection: Product.pluck(:material).uniq.sort %>
+  <%#= f.button :submit, "Search now"%>
+<%# end %>
+
+<%= form_tag booking_products_path(@booking), method: :get do |f| %> <%#= add remote = true for AJAX %>
+
+  <% product_room_options = Room.pluck(:name).uniq %>
+  <% product_room_options << "all" %>
+
+  <% category_options = Product.pluck(:category).uniq %>
+  <% category_options << "all" %>
+
+  <% style_options = Product.pluck(:style).uniq %>
+  <% style_options << "all" %>
+
+  <% material_options = Product.pluck(:material).uniq %>
+  <% material_options << "all" %>
+
+  <div><%= label_tag(:q, "Room category:") %>
+    <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %></div>
+  <div><%= label_tag(:q, "Furniture category:") %>
+    <%= select_tag :category, options_for_select(category_options.sort, params[:category])%></div>
+  <div><%= label_tag(:q, "Style:") %>
+    <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %></div>
+  <div><%= label_tag(:q, "Material:") %>
+    <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %></div>
+  <%= submit_tag "Search now"%>
 <% end %>
-<%= form_tag booking_products_path(@booking), method: :get do %>
-  <%= label_tag(:product_category, "Category") %>
-  <%= select_tag :product_category, options_for_select(Product.pluck(:product_category)) %>
-  <%= submit_tag "Search" %>
-<% end %>
-<%= form_tag booking_products_path(@booking), method: :get do %>
-  <%= label_tag(:style, "Style") %>
-  <%= select_tag :style, options_for_select(Product.pluck(:style)) %>
-  <%= submit_tag "Search" %>
-<% end %>
-  <%= form_tag booking_products_path(@booking), method: :get do %>
-  <%= label_tag(:material, "Material") %>
-  <%= select_tag :material, options_for_select(Product.pluck(:material)) %>
-  <%= submit_tag "Search" %>
-<% end %>
+
+
 <div class="form form-inline">
   <%= simple_form_for(@booking) do |f| %>
     <%= f.input :ends_at, as: :date, label: "Change your dates" %>
     <%= f.button :submit, "Change your dates" %>
   <% end %>
 </div>
+
+<%#= form_tag booking_products_path(@booking), method: :get do %>
+  <%#= label_tag(:name, "Room") %>
+  <%#= select_tag :name, options_for_select(Room.pluck(:name)) %>
+  <%#= submit_tag "Search" %>
+<%# end %>
+<%#= form_tag booking_products_path(@booking), method: :get do %>
+  <%#= label_tag(:product_category, "Category") %>
+  <%#= select_tag :product_category, options_for_select(Product.pluck(:product_category).uniq.sort) %>
+  <%#= submit_tag "Search" %>
+<%# end %>
+<%#= form_tag booking_products_path(@booking), method: :get do %>
+  <%#= label_tag(:style, "Style") %>
+  <%#= select_tag :style, options_for_select(Product.pluck(:style)) %>
+  <%#= submit_tag "Search" %>
+<%# end %>
+  <%#= form_tag booking_products_path(@booking), method: :get do %>
+  <%#= label_tag(:material, "Material") %>
+  <%#= select_tag :material, options_for_select(Product.pluck(:material)) %>
+  <%#= submit_tag "Search" %>
+<%# end %>
