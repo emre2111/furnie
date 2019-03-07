@@ -6,57 +6,55 @@
   <%#= f.button :submit, "Search now"%>
 <%# end %>
 
-  <%= form_tag booking_products_path(@booking), method: :get do |f| %> <%#= add remote = true for AJAX %>
+  <div>
+    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
 
-    <% product_room_options = Room.pluck(:name).uniq %>
-    <% product_room_options << "all" %>
+      <% product_room_options = Room.pluck(:name).uniq %>
+      <% product_room_options << "all" %>
 
-    <% category_options = Product.pluck(:category).uniq %>
-    <% category_options << "all" %>
+      <% category_options = Product.pluck(:category).uniq %>
+      <% category_options << "all" %>
 
-    <% style_options = Product.pluck(:style).uniq %>
-    <% style_options << "all" %>
+      <% style_options = Product.pluck(:style).uniq %>
+      <% style_options << "all" %>
 
-    <% material_options = Product.pluck(:material).uniq %>
-    <% material_options << "all" %>
+      <% material_options = Product.pluck(:material).uniq %>
+      <% material_options << "all" %>
 
-    <div class="form-tag room-category">
-      <div class="label_tag">
-        <%= label_tag(:q, "Room category:") %>
+      <div class="form-tag room-category">
+        <div class="label_tag">
+          <%= label_tag(:q, "Room category:") %>
+        </div>
+        <div class="select_tag">
+          <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
+        </div>
       </div>
-      <div class="select_tag">
-        <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
+      <div class="form-tag furniture-category">
+        <div class="label_tag">
+          <%= label_tag(:q, "Furniture category:") %>
+        </div>
+        <div class="select_tag">
+          <%= select_tag :category, options_for_select(category_options.sort, params[:category]) %>
+        </div>
       </div>
-    </div>
-    <div class="form-tag furniture-category">
-      <div class="label_tag">
-        <%= label_tag(:q, "Furniture category:") %>
+      <div class="form-tag style">
+        <div class="label_tag">
+          <%= label_tag(:q, "Style:") %>
+        </div>
+        <div class="select_tag">
+          <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %>
+        </div>
       </div>
-      <div class="select_tag">
-        <%= select_tag :category, options_for_select(category_options.sort, params[:category]) %>
+      <div class="form-tag material">
+        <div class="label_tag">
+          <%= label_tag(:q, "Material:") %>
+        </div>
+        <div class="select_tag">
+          <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %>
+        </div>
       </div>
-    </div>
-    <div class="form-tag style">
-      <div class="label_tag">
-        <%= label_tag(:q, "Style:") %>
-      </div>
-      <div class="select_tag">
-        <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %>
-      </div>
-    </div>
-    <div class="form-tag material">
-      <div class="label_tag">
-        <%= label_tag(:q, "Material:") %>
-      </div>
-      <div class="select_tag">
-        <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %>
-      </div>
-    </div>
-    <div class="submit-tag">
-      <%= submit_tag "Search now"%>
-    </div>
-  <% end %>
-
+    <% end %>
+  </div>
 
   <div class="form form-inline">
     <%= simple_form_for(@booking) do |f| %>
@@ -64,6 +62,10 @@
       <%= f.button :submit, "Change your dates" %>
     <% end %>
   </div>
+
+  <%= content_for(:after_js) do  %>
+   <%= javascript_pack_tag "event-sidebar" %>
+   <% end %>
 <%#= form_tag booking_products_path(@booking), method: :get do %>
   <%#= label_tag(:name, "Room") %>
   <%#= select_tag :name, options_for_select(Room.pluck(:name)) %>
