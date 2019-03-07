@@ -12,12 +12,12 @@ class PaymentsController < ApplicationController
 
     charge = Stripe::Charge.create(
       customer:     customer.id,  # You should store this customer id and re-use it.
-      amount:       @booking.amount_cents,
+      amount:       @booking.total_amount_cents,
       description:  "Payment for #{@booking.product_sku} for order #{@booking.id}",
       currency:     @booking.amount_currency
     )
 
-    @booking.update(payment: charge.to_json, state: 'paid')
+    @booking.update(payment: charge.to_json, state: 'paid', amount_cents: @booking.total_amount_cents)
     redirect_to #boooking confirmation path(@booking)
 
   rescue Stripe::CardError => e
