@@ -5,10 +5,12 @@
     <div class="show-desc-container">
       <div class="product-desc">
         <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-primary" %>
-        <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-primary" %>
-        <%= link_to "Back", booking_products_path(@booking), class: "btn btn-primary" %>
-        <h4><%= humanized_money_with_symbol(@product.price) %></h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+        <div class="product-details">
+          <h4><%= humanized_money_with_symbol(@product.price) %></h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+        </div>
+        <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost" %>
+        <%= link_to "Back", booking_products_path(@booking), class: "btn btn-ghost" %>
       </div>
     </div>
   </div>

@@ -33,6 +33,10 @@ class BookingsController < ApplicationController
     redirect_to booking_products_path(@booking)
   end
 
+  def confirmation
+
+  end
+
   private
 
   def booking_params
