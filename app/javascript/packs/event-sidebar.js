@@ -1,8 +1,8 @@
 function sidebar(){
-  const form = document.querySelector(".form-sidebar");
+  const sidebar_form = document.querySelector(".form-sidebar");
 
-  form.addEventListener("change", (event) => {
-    form.submit();
+  sidebar_form.addEventListener("change", (event) => {
+    sidebar_form.submit();
   });
 
 }
