@@ -20,12 +20,26 @@
 .product-desc {
   margin-top: 30px;
 }
+.product-details {
+  margin: 30px 15px;
+}
 
 .btn-primary {
   border-radius: 5px;
   background-color: #1BBB99;
   border: none;
+  padding: 12px;
   &:hover {
     background-color: #218A78;
+  }
+}
+
+.btn-ghost {
+  border-radius: 5px;
+  color: #1BBB99;
+  background-color: #FFFFFF;
+  border: 1px solid #1BBB99;
+  &:hover {
+    color: #218A78;
   }
 }

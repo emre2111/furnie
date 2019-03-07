@@ -17,6 +17,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
 gem "money-rails"
+gem 'stripe'
 
 gem 'nokogiri'
 
