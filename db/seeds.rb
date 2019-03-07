@@ -21,68 +21,94 @@ puts 'Creating items...'
 Room.destroy_all
 puts 'Creating rooms'
 
+
+
 ############################     Beds     #######################
+material = ["realleather","textile", "solidwood", "syntheticleather"]
+style = ["nature", "industrial", "scandinavian", "modern"]
 beds = []
-url = 'https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/bettgestelle/?material=textile&styleFilter=modernStyle'
-scraper(url).each do |product|
-  beds <<  {
-    name:                 product[:name],
-    sku:                  rand(10 ** 10).to_s,
-    stock:                3,
-    photo:                product[:photo],
-    style:                'modern',
-    material:             'textile',
-    category:             'bed',
-    price_cents:          product[:price_cents]
-  }
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      beds <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'bed',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
 end
 
 ############################     Tables     #######################
+material = ["solidwood","glass", "woodsemisolid" ]
+style = ["nature", "industrial", "scandinavian", "modern"]
 tables = []
-url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
-scraper(url).each do |product|
-  tables <<  {
-    name:                 product[:name],
-    sku:                  rand(10 ** 10).to_s,
-    stock:                3,
-    photo:                product[:photo],
-    style:                'modern',
-    material:             'wood',
-    category:             'table',
-    price_cents:          product[:price_cents]
-  }
+material.each do |m|
+  style.each do |s|
+    url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
+    scraper(url).each do |product|
+      tables <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'table',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
 end
 
 ############################     Chairs     #######################
+material = ["realleather","textile", "plastic", "syntheticleather"]
+style = ["nature", "industrial", "scandinavian", "modern"]
 chairs = []
-url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=textile&styleFilter=modernStyle'
-scraper(url).each do |product|
-  chairs <<  {
-    name:                 product[:name],
-    sku:                  rand(10 ** 10).to_s,
-    stock:                3,
-    photo:                product[:photo],
-    style:                'modern',
-    material:             'textile',
-    category:             'chair',
-    price_cents:          product[:price_cents]
-  }
+material.each do |m|
+  style.each do |s|
+    url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=textile&styleFilter=modernStyle'
+    scraper(url).each do |product|
+      chairs <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'chair',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
 end
 
 ############################     Sofas     #######################
+material = ["realleather","textile", "syntheticleather"]
+style = ["industrial", "scandinavian", "modern"]
 sofas = []
-url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=textile&styleFilter=modernStyle'
-scraper(url).each do |product|
-  sofas <<  {
-    name:                 product[:name],
-    sku:                  rand(10 ** 10).to_s,
-    stock:                3,
-    photo:                product[:photo],
-    style:                'modern',
-    material:             'textile',
-    category:             'sofa',
-    price_cents:          product[:price_cents]
-  }
+material.each do |m|
+  style.each do |s|
+    url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=textile&styleFilter=modernStyle'
+    scraper(url).each do |product|
+      sofas <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'sofa',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
 end
 
 Product.create!(beds)
