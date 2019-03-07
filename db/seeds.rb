@@ -19,97 +19,82 @@ puts 'Creating products...'
 Item.destroy_all
 puts 'Creating items...'
 
+############################     Table     #######################
+tables = []
+url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
+scraper(url).each do |product|
+  tables <<  {
+  name:                 product[:name],
+  sku:                  '17927638490',
+  stock:                10,
+  photo:                product[:photo],
+  style:                'modern',
+  material:             'wood',
+  product_category:     'table',
+  price_cents:          product[:price_cents]
+  }
+end
+Product.create!(tables)
+
+############################     Chairs     #######################
+chairs = []
+url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=textile&styleFilter=modernStyle'
+scraper(url).each do |product|
+  chairs <<  {
+  name:                 product[:name],
+  sku:                  '17927638490',
+  stock:                10,
+  photo:                product[:photo],
+  style:                'modern',
+  material:             'textile',
+  product_category:     'chair',
+  price_cents:          product[:price_cents]
+  }
+  
 Room.destroy_all
 puts 'Creating rooms'
 
+10.times do
 
+end
+Product.create!(chairs)
 
-products_attributes = [
-  # some beds
-  {
-    name:                 'MJOELVIK',
-    sku:                  '1948292030',
-    stock:                10,
-    photo:                'https://www.ikea.com/de/de/images/products/mjolvik-boxspringbett-beige__0373793_PE553241_S4.JPG',
-    style:                'classic',
-    material:             'fabric',
-    category:             'bed',
-    price_cents:          300
-  },
-  {
-    name:                 'LEIRVIK',
-    sku:                  '5248289032',
-    stock:                10,
-    photo:                'https://www.ikea.com/de/de/images/products/leirvik-bettgestell-wei-__0555081_PE660118_S4.JPG',
-    style:                'vintage',
-    material:             'metal',
-    category:             'bed',
-    price_cents:          100
-  },
-  {
-    name:                 'DELAKTIG',
-    sku:                  '2579073211',
-    stock:                10,
-    photo:                'https://www.ikea.com/de/de/images/products/delaktig-bettgestell-kopfteil-beistellti__0660300_PE711012_S4.JPG',
-    style:                'modern',
-    material:             'wood',
-    category:             'bed',
-    price_cents:          200
-  },
-  {
-    name:                 'HEMNES',
-    sku:                  '9837492030',
-    stock:                10,
-    photo:                'https://www.ikea.com/de/de/images/products/hemnes-bettgestell-mit-schubladen__0448720_PE598347_S4.JPG',
-    style:                'classic',
-    material:             'wood',
-    category:             'bed',
-    price_cents:          300
-  },
-# some tabbles
-{
-  name:                 'LERHAMN',
-  sku:                  '4832462220',
+############################     Sofa     #######################
+sofas = []
+url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=textile&styleFilter=modernStyle'
+scraper(url).each do |product|
+  sofas <<  {
+  name:                 product[:name],
+  sku:                  '1948292030',
   stock:                10,
-  photo:                'https://www.ikea.com/de/de/images/products/lerhamn-tisch__0238243_PE377691_S4.JPG',
-  style:                'classic',
-  material:             'wood',
-  category:             'table',
-  price_cents:          300
-},
-{
-  name:                 'FRANCOIS',
-  sku:                  '2846467450',
+  photo:                product[:photo],
+  style:                'modern',
+  material:             'textile',
+  product_category:     'sofa',
+  price_cents:          product[:price_cents]
+  }
+end
+Product.create!(sofas)
+
+############################     Beds     #######################
+beds = []
+url = 'https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/bettgestelle/?material=textile&styleFilter=modernStyle'
+scraper(url).each do |product|
+  beds <<  {
+  name:                 product[:name],
+  sku:                  '17927638490',
   stock:                10,
-  photo:                'https://cdn.connox.de/m/100107/209395/media/hay/Copenhague-Deux/Tisch/Hay-Copenhague-CPH-Deux-220-Tisch-98-cm-lackierte-Eiche-mit-Linoleum-hellgrau-frei.jpg',
-  style:                'classic',
-  material:             'wood',
-  category:             'table',
-  price_cents:          300
-}
-]
-
-Product.create!(products_attributes)
-
-10.times do
-  Item.create({ product_id: Product.find_by(sku: '1948292030').id})
+  photo:                product[:photo],
+  style:                'modern',
+  material:             'textile',
+  product_category:     'bed',
+  price_cents:          product[:price_cents]
+  }
 end
+Product.create!(beds)
 
-10.times do
-  Item.create({ product_id: Product.find_by(sku: '5248289032').id})
-end
 
-10.times do
-  Item.create({ product_id: Product.find_by(sku: '2579073211').id})
-end
 
-10.times do
-  Item.create({ product_id: Product.find_by(sku: '9837492030').id})
-end
-
-10.times do
-  Item.create({ product_id: Product.find_by(sku: '4832462220').id})
-end
 
 10.times do
   Item.create({ product_id: Product.find_by(sku: '2846467450').id})
