@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
     @booking.starts_at = Date.today
     if @booking.save
       redirect_to booking_products_path(@booking)
@@ -34,7 +35,7 @@ class BookingsController < ApplicationController
   end
 
   def confirmation
-
+    @booking = current_user.bookings.where(state: 'paid').find(params[:id])
   end
 
   private

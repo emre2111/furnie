@@ -15,7 +15,8 @@
 }
 
 .card-category {
-  background-size: cover;
+  background-size: content;
+  background-repeat: no-repeat;
   background-position: center;
   height: 200px;
   display: flex;

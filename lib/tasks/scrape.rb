@@ -20,7 +20,5 @@ def scraper(url)
       :photo => photo
     }
   end
-  p outputs.first(5)
   outputs
-
 end

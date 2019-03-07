@@ -21,79 +21,100 @@ puts 'Creating items...'
 Room.destroy_all
 puts 'Creating rooms'
 
-################################     Table     #######################
-tables = []
-url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
-scraper(url).each do |product|
-  tables <<  {
-  name:                 product[:name],
-  sku:                  '17927638490',
-  stock:                10,
-  photo:                product[:photo],
-  style:                'modern',
-  material:             'wood',
-  category:             'table',
-  price_cents:          product[:price_cents]
-  }
-end
-Product.create!(tables)
-
-
-############################     Chairs     #######################
-chairs = []
-url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=textile&styleFilter=modernStyle'
-scraper(url).each do |product|
-  chairs <<  {
-  name:                 product[:name],
-  sku:                  '1384759290',
-  stock:                10,
-  photo:                product[:photo],
-  style:                'modern',
-  material:             'textile',
-  category:             'chair',
-  price_cents:          product[:price_cents]
-  }
-end
-Product.create!(chairs)
-
-
-############################     Sofa     #######################
-sofas = []
-url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=textile&styleFilter=modernStyle'
-scraper(url).each do |product|
-  sofas <<  {
-  name:                 product[:name],
-  sku:                  '1895301750',
-  stock:                10,
-  photo:                product[:photo],
-  style:                'modern',
-  material:             'textile',
-  category:             'sofa',
-  price_cents:          product[:price_cents]
-  }
-end
-Product.create!(sofas)
-
 
 
 ############################     Beds     #######################
+material = ["realleather","textile", "solidwood", "syntheticleather"]
+style = ["nature", "industrial", "scandinavian", "modern"]
 beds = []
-url = 'https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/bettgestelle/?material=textile&styleFilter=modernStyle'
-scraper(url).each do |product|
-  beds <<  {
-  name:                 product[:name],
-  sku:                  '1489375920',
-  stock:                10,
-  photo:                product[:photo],
-  style:                'modern',
-  material:             'textile',
-  category:             'bed',
-  price_cents:          product[:price_cents]
-  }
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      beds <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'bed',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+
+############################     Tables     #######################
+material = ["solidwood","glass", "woodsemisolid" ]
+style = ["nature", "industrial", "scandinavian", "modern"]
+tables = []
+material.each do |m|
+  style.each do |s|
+    url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
+    scraper(url).each do |product|
+      tables <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'table',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+
+############################     Chairs     #######################
+material = ["realleather","textile", "plastic", "syntheticleather"]
+style = ["nature", "industrial", "scandinavian", "modern"]
+chairs = []
+material.each do |m|
+  style.each do |s|
+    url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=textile&styleFilter=modernStyle'
+    scraper(url).each do |product|
+      chairs <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'chair',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+
+############################     Sofas     #######################
+material = ["realleather","textile", "syntheticleather"]
+style = ["industrial", "scandinavian", "modern"]
+sofas = []
+material.each do |m|
+  style.each do |s|
+    url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=textile&styleFilter=modernStyle'
+    scraper(url).each do |product|
+      sofas <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'sofa',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
 end
 
 Product.create!(beds)
-
+Product.create!(tables)
+Product.create!(chairs)
+Product.create!(sofas)
 
 rooms_attributes = [
   # some beds
@@ -113,14 +134,40 @@ rooms_attributes = [
 
 Room.create!(rooms_attributes)
 
-# Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'kitchen')
-# Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'living room')
-# Product.find_by(name: 'FRANCOIS').rooms << Room.find_by(name: 'other')
+##########   links the product category to the room category   ##########
+##########     add to list if new category is added above      ##########
 
+Product.all.where(category: 'bed').each do  |product|
+   product.rooms << Room.find_by(name: 'bedroom')
+end
 
-# Product.find_by(name: 'MJOELVIK').rooms << Room.find_by(name: 'bedroom')
-# Product.find_by(name: 'LEIRVIK').rooms << Room.find_by(name: 'bedroom')
-# Product.find_by(name: 'DELAKTIG').rooms << Room.find_by(name: 'bedroom')
-# Product.find_by(name: 'HEMNES').rooms << Room.find_by(name: 'bedroom')
+Product.all.where(category: 'table').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'table').each do  |product|
+   product.rooms << Room.find_by(name: 'kitchen')
+end
+
+Product.all.where(category: 'chair').each do  |product|
+   product.rooms << Room.find_by(name: 'kitchen')
+end
+
+Product.all.where(category: 'chair').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'sofa').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+########## creates 3 items for each product ##########
+##########          DO NOT CHANGE           ##########
+Product.all.each do |product|
+  3.times do
+    Item.create(product_id: product.id)
+  end
+end
+##########          DO NOT CHANGE           ##########
 
 puts 'Finished!'
