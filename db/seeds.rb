@@ -5,10 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require './lib/tasks/scrape.rb'
 
 
 puts 'Cleaning database...'
+
+
+ProductRoom.destroy_all
+puts 'Creating product rooms'
 
 Product.destroy_all
 puts 'Creating products...'
@@ -47,6 +50,12 @@ scraper(url).each do |product|
   product_category:     'chair',
   price_cents:          product[:price_cents]
   }
+  
+Room.destroy_all
+puts 'Creating rooms'
+
+10.times do
+
 end
 Product.create!(chairs)
 
@@ -86,5 +95,37 @@ Product.create!(beds)
 
 
 
+
+10.times do
+  Item.create({ product_id: Product.find_by(sku: '2846467450').id})
+end
+
+rooms_attributes = [
+  # some beds
+  {
+    name:                 'bedroom'
+  },
+  {
+    name:                 'kitchen'
+  },
+  {
+    name:                 'living room'
+  },
+  {
+    name:                 'other'
+  }
+]
+
+Room.create!(rooms_attributes)
+
+Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'kitchen')
+Product.find_by(name: 'LERHAMN').rooms << Room.find_by(name: 'living room')
+Product.find_by(name: 'FRANCOIS').rooms << Room.find_by(name: 'other')
+
+
+Product.find_by(name: 'MJOELVIK').rooms << Room.find_by(name: 'bedroom')
+Product.find_by(name: 'LEIRVIK').rooms << Room.find_by(name: 'bedroom')
+Product.find_by(name: 'DELAKTIG').rooms << Room.find_by(name: 'bedroom')
+Product.find_by(name: 'HEMNES').rooms << Room.find_by(name: 'bedroom')
 
 puts 'Finished!'

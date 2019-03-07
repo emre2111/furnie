@@ -1,13 +1,13 @@
-<%= link_to booking_products_path(@booking) do  %>
-<div class="col-sm-12 col-md-6 col-lg-4">
-  <div class="card-container">
-    <div class="card-category" style="background-image: url('<%=  product.photo %>')">
-      <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
-    </div>
-    <div class="product-desc">
-      <h4><%= product.name %></h4>
-      <p> <strong><%= humanized_money_with_symbol(product.price) %> </strong></p>
+<%= link_to booking_product_path(booking, product) do  %>
+  <div class="col-sm-12 col-md-6 col-lg-4">
+    <div class="card-container">
+      <div class="card-category" style="background-image: url('<%=  product.photo %>')">
+        <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
+      </div>
+      <div class="product-desc">
+        <h4><%= product.name %></h4>
+        <p><strong><%= humanized_money_with_symbol(product.price) %> </strong></p>
+      </div>
     </div>
   </div>
-</div>
 <% end %>
