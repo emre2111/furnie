@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2019_03_05_151030) do
     t.string "photo"
     t.string "style"
     t.string "material"
-    t.string "product_category"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
