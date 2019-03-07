@@ -21,7 +21,7 @@ puts 'Creating items...'
 Room.destroy_all
 puts 'Creating rooms'
 
-############################     Table     #######################
+################################     Table     #######################
 tables = []
 url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
 scraper(url).each do |product|
