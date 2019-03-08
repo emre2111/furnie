@@ -6,13 +6,13 @@
       <% @items.each do |item| %>
         <div class="booking-item-container">
           <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
-            <div class="show-desc">
-              <div class="item-desc">
-                <strong><%= item.product.name %></strong><br>
-                <p>some description here</p><br>
-                <%= humanized_money_with_symbol(item.product.price) %>
-              </div>
+          <div class="show-desc">
+            <div class="item-desc">
+              <strong><%= item.product.name %></strong><br>
+              <p>some description here</p><br>
+              <%= humanized_money_with_symbol(item.product.price) %>
             </div>
+          </div>
         </div>
         <hr>
       <% end %>
@@ -25,9 +25,8 @@
         <p>Shipping fee</p>
         <hr>
         <strong><p>Total</p></strong>
-        <%= button_to "Rent now", "#", class: "btn btn-primary" %>
+        <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-primary" %>
       </div>
     </div>
   </div>
-
 </div>
