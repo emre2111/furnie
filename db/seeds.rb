@@ -23,7 +23,7 @@ puts 'Creating items...'
 
 
 
-
+puts 'Scraping .....'
 ############################     Beds     #######################
 material = ["realleather","textile", "solidwood", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
@@ -134,11 +134,34 @@ material.each do |m|
   end
 end
 
+############################     chests     #######################
+material = ["realleather","glass", "solidwood", "wood"]
+style = ["nature","industrial", "scandinavian", "modern"]
+chests = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/kommoden-und-sideboards/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      chests <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'chest',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+
 Product.create!(beds)
 Product.create!(tables)
 Product.create!(chairs)
 Product.create!(sofas)
 Product.create!(wardrobes)
+Product.create!(chests)
 
 ##########   links the product category to the room category   ##########
 ##########     add to list if new category is added above      ##########
