@@ -9,17 +9,20 @@ require './lib/tasks/scrape'
 
 puts 'Cleaning database...'
 
-ProductRoom.destroy_all
-puts 'Creating product rooms'
-
 Product.destroy_all
 puts 'Creating products...'
+
+Room.destroy_all
+puts 'Creating rooms'
+
+ProductRoom.destroy_all
+puts 'Creating product rooms'
 
 Item.destroy_all
 puts 'Creating items...'
 
-Room.destroy_all
-puts 'Creating rooms'
+
+
 
 ############################     Beds     #######################
 material = ["realleather","textile", "solidwood", "syntheticleather"]
@@ -136,25 +139,6 @@ Product.create!(tables)
 Product.create!(chairs)
 Product.create!(sofas)
 Product.create!(wardrobes)
-
-
-########## creates 3 items for each product ##########
-##########          DO NOT CHANGE           ##########
-
-# p = Product.all.uniq {|e| e[:name] }
-
-
-Product.all.each do |product|
-  3.times do
-    Item.create(product_id: product.id)
-  end
-end
-
-# Product.all.each do |product|
-#   product.destroy! if product.item == nil
-# end
-
-##########          DO NOT CHANGE           ##########
 
 ##########   links the product category to the room category   ##########
 ##########     add to list if new category is added above      ##########
