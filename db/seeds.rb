@@ -9,21 +9,20 @@ require './lib/tasks/scrape'
 
 puts 'Cleaning database...'
 
-Product.destroy_all
-puts 'Creating products...'
+ProductRoom.destroy_all
+puts 'Destroying product rooms'
 
 Room.destroy_all
-puts 'Creating rooms'
+puts 'Destroying rooms'
 
-ProductRoom.destroy_all
-puts 'Creating product rooms'
+Product.destroy_all
+puts 'Destroying products...'
 
 Item.destroy_all
-puts 'Creating items...'
+puts 'Destroying items...'
 
+puts 'Scraping furniture products, creating rooms and items.....'
 
-
-puts 'Scraping .....'
 ############################     Beds     #######################
 material = ["realleather","textile", "solidwood", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
@@ -139,7 +138,6 @@ material.each do |m|
 end
 Product.create!(wardrobes)
 
-
 ############################     chests     #######################
 material = ["realleather","glass", "solidwood", "wood"]
 style = ["nature","industrial", "scandinavian", "modern"]
@@ -155,7 +153,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'chest',
+        category:             'shelve',
         price_cents:          product[:price_cents]
       }
     end
@@ -209,9 +207,6 @@ material.each do |m|
 end
 Product.create!(deskchairs)
 
-
-
-
 ##########   links the product category to the room category   ##########
 ##########     add to list if new category is added above      ##########
 
@@ -246,6 +241,9 @@ rooms_attributes = [
     name:                 'living room'
   },
   {
+    name:                 'bathroom'
+  },
+  {
     name:                 'other'
   }
 ]
@@ -273,6 +271,30 @@ Product.all.where(category: 'chair').each do  |product|
 end
 
 Product.all.where(category: 'sofa').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'wardrobe').each do  |product|
+   product.rooms << Room.find_by(name: 'bedroom')
+end
+
+Product.all.where(category: 'shelve').each do  |product|
+   product.rooms << Room.find_by(name: 'bedroom')
+end
+
+Product.all.where(category: 'shelve').each do  |product|
+   product.rooms << Room.find_by(name: 'kitchen')
+end
+
+Product.all.where(category: 'shelve').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'desk').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'desk chair').each do  |product|
    product.rooms << Room.find_by(name: 'living room')
 end
 
