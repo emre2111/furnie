@@ -51,12 +51,12 @@
   <div class="form form-inline">
     <%= simple_form_for(@booking) do |f| %>
     <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
-    <%= f.button :submit, "Change your dates" %>
     <% end %>
   </div>
 
   <%= content_for(:after_js) do  %>
    <%= javascript_pack_tag "event-sidebar" %>
+   <%#= javascript_pack_tag "event-date" %>
   <% end %>
 <%#= form_tag booking_products_path(@booking), method: :get do %>
   <%#= label_tag(:name, "Room") %>
