@@ -21,8 +21,6 @@ puts 'Creating items...'
 Room.destroy_all
 puts 'Creating rooms'
 
-
-
 ############################     Beds     #######################
 material = ["realleather","textile", "solidwood", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
@@ -38,7 +36,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'bed',
+        category:             'Bed',
         price_cents:          product[:price_cents]
       }
     end
@@ -51,7 +49,7 @@ style = ["nature", "industrial", "scandinavian", "modern"]
 tables = []
 material.each do |m|
   style.each do |s|
-    url = 'https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=wood&styleFilter=modernStyle'
+    url = "https://www.home24.de/kategorie/esszimmermoebel/esstische/?material=#{m}&styleFilter=#{s}Style"
     scraper(url).each do |product|
       tables <<  {
         name:                 product[:name],
@@ -60,7 +58,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'table',
+        category:             'Table',
         price_cents:          product[:price_cents]
       }
     end
@@ -73,7 +71,7 @@ style = ["nature", "industrial", "scandinavian", "modern"]
 chairs = []
 material.each do |m|
   style.each do |s|
-    url = 'https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=textile&styleFilter=modernStyle'
+    url = "https://www.home24.de/kategorie/esszimmermoebel/esszimmerstuehle/?material=#{m}&styleFilter=#{s}Style"
     scraper(url).each do |product|
       chairs <<  {
         name:                 product[:name],
@@ -82,7 +80,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'chair',
+        category:             'Chair',
         price_cents:          product[:price_cents]
       }
     end
@@ -95,7 +93,7 @@ style = ["industrial", "scandinavian", "modern"]
 sofas = []
 material.each do |m|
   style.each do |s|
-    url = 'https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=textile&styleFilter=modernStyle'
+    url = "https://www.home24.de/kategorie/wohnzimmermoebel/sofas-und-couches/sofas/?material=#{m}&styleFilter=#{s}Style"
     scraper(url).each do |product|
       sofas <<  {
         name:                 product[:name],
@@ -104,7 +102,29 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'sofa',
+        category:             'Sofa',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+
+############################     wardrobe     #######################
+material = ["realleather","glass", "solidwood", "wood"]
+style = ["nature","industrial", "scandinavian", "modern"]
+wardrobes = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/schlafzimmermoebel/kleiderschraenke/?styleFilter=#{s}Style&material=#{m}"
+    scraper(url).each do |product|
+      wardrobes <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'Wardrobe',
         price_cents:          product[:price_cents]
       }
     end
@@ -115,6 +135,48 @@ Product.create!(beds)
 Product.create!(tables)
 Product.create!(chairs)
 Product.create!(sofas)
+Product.create!(wardrobes)
+
+
+########## creates 3 items for each product ##########
+##########          DO NOT CHANGE           ##########
+
+# p = Product.all.uniq {|e| e[:name] }
+
+
+Product.all.each do |product|
+  3.times do
+    Item.create(product_id: product.id)
+  end
+end
+
+# Product.all.each do |product|
+#   product.destroy! if product.item == nil
+# end
+
+##########          DO NOT CHANGE           ##########
+
+##########   links the product category to the room category   ##########
+##########     add to list if new category is added above      ##########
+
+p = Product.all
+
+p.each do |product|
+  product.delete unless Product.all.where(name: product[:name]).count == 1
+end
+
+######## test #########
+# d = Product.all.uniq {|e| e[:name] }
+######## test #########
+
+######### creates 3 items for each product ##########
+#########          DO NOT CHANGE           ##########
+Product.all.each do |product|
+  3.times do
+    Item.create(product_id: product.id)
+  end
+end
+#########          DO NOT CHANGE           ##########
 
 rooms_attributes = [
   # some beds
@@ -133,9 +195,6 @@ rooms_attributes = [
 ]
 
 Room.create!(rooms_attributes)
-
-##########   links the product category to the room category   ##########
-##########     add to list if new category is added above      ##########
 
 Product.all.where(category: 'bed').each do  |product|
    product.rooms << Room.find_by(name: 'bedroom')
@@ -161,13 +220,10 @@ Product.all.where(category: 'sofa').each do  |product|
    product.rooms << Room.find_by(name: 'living room')
 end
 
-########## creates 3 items for each product ##########
-##########          DO NOT CHANGE           ##########
-Product.all.each do |product|
-  3.times do
-    Item.create(product_id: product.id)
-  end
-end
-##########          DO NOT CHANGE           ##########
-
 puts 'Finished!'
+
+
+
+
+
+

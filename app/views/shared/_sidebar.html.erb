@@ -1,65 +1,57 @@
-<%#= simple_form_for :search, method: :get do |f| %> <%#= add remote = true for AJAX %>
-  <%#= f.select :product_room, collection: Room.pluck(:name).uniq.sort, selected:  params[:search][:product_room] || "kitchen" %>
-  <%#= f.select :category, collection: Product.pluck(:category).uniq.sort%>
-  <%#= f.select :style, collection: Product.pluck(:style).uniq.sort %>
-  <%#= f.select :material, collection: Product.pluck(:material).uniq.sort %>
-  <%#= f.button :submit, "Search now"%>
-<%# end %>
-
   <div>
     <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
 
-      <% product_room_options = Room.pluck(:name).uniq %>
-      <% product_room_options << "all" %>
+    <% product_room_options = Room.pluck(:name).uniq %>
+    <% product_room_options << "all" %>
 
-      <% category_options = Product.pluck(:category).uniq %>
-      <% category_options << "all" %>
+    <% category_options = Product.pluck(:category).uniq %>
+    <% category_options << "all" %>
 
-      <% style_options = Product.pluck(:style).uniq %>
-      <% style_options << "all" %>
+    <% style_options = Product.pluck(:style).uniq %>
+    <% style_options << "all" %>
 
-      <% material_options = Product.pluck(:material).uniq %>
-      <% material_options << "all" %>
+    <% material_options = Product.pluck(:material).uniq %>
+    <% material_options << "all" %>
 
-      <div class="form-tag room-category">
-        <div class="label_tag">
-          <%= label_tag(:product_room, "Room category:") %>
-        </div>
-        <div class="select_tag">
-          <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
-        </div>
+    <div class="form-tag room-category">
+      <div class="label_tag">
+        <%= label_tag(:product_room, "Room category:") %>
       </div>
-      <div class="form-tag furniture-category">
-        <div class="label_tag">
-          <%= label_tag(:category, "Furniture category:") %>
-        </div>
-        <div class="select_tag">
-          <%= select_tag :category, options_for_select(category_options.sort, params[:category]) %>
-        </div>
+      <div class="select_tag">
+        <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
       </div>
-      <div class="form-tag style">
-        <div class="label_tag">
-          <%= label_tag(:style, "Style:") %>
-        </div>
-        <div class="select_tag">
-          <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %>
-        </div>
+    </div>
+    <div class="form-tag furniture-category">
+      <div class="label_tag">
+        <%= label_tag(:category, "Furniture category:") %>
       </div>
-      <div class="form-tag material">
-        <div class="label_tag">
-          <%= label_tag(:material, "Material:") %>
-        </div>
-        <div class="select_tag">
-          <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %>
-        </div>
+      <div class="select_tag">
+        <%= select_tag :category, options_for_select(category_options.sort, params[:category]) %>
       </div>
+    </div>
+    <div class="form-tag style">
+      <div class="label_tag">
+        <%= label_tag(:style, "Style:") %>
+      </div>
+      <div class="select_tag">
+        <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %>
+      </div>
+    </div>
+    <div class="form-tag material">
+      <div class="label_tag">
+        <%= label_tag(:material, "Material:") %>
+      </div>
+      <div class="select_tag">
+        <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %>
+      </div>
+    </div>
     <% end %>
   </div>
 
   <div class="form form-inline">
     <%= simple_form_for(@booking) do |f| %>
-      <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
-      <%= f.button :submit, "Change your dates" %>
+    <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
+    <%= f.button :submit, "Change your dates" %>
     <% end %>
   </div>
 

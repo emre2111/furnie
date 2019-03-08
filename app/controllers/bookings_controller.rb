@@ -36,6 +36,7 @@ class BookingsController < ApplicationController
 
   def confirmation
     @booking = current_user.bookings.where(state: 'paid').find(params[:id])
+    @items = @booking.items
   end
 
   private
