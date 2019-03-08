@@ -7,6 +7,6 @@ class Booking < ApplicationRecord
   monetize :total_amount_cents
 
   def total_amount_cents
-    items.sum { |item| item.product.price_cents } * (ends_at - starts_at).to_i
+    items.sum { |item| item.product.price_cents } * (ends_at - starts_at).to_i + 5000
   end
 end
