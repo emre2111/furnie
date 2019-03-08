@@ -21,10 +21,12 @@
     <div class="payment-sidebar">
       <h4>Order overview</h4>
       <div class="payment-detail">
-        <p>Subtotal</p>
+
+<!--#HAVE TO FIX PRICE-->
+        <p>Subtotal <%= humanized_money_with_symbol(@booking.total_amount_cents) %></p>
         <p>Shipping fee</p>
         <hr>
-        <strong><p>Total</p></strong>
+        <strong><p>Total <%= humanized_money_with_symbol(@booking.total_amount_cents) %></p></strong>
         <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-primary" %>
       </div>
     </div>

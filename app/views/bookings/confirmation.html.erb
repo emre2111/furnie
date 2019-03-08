@@ -1,4 +1,43 @@
 <div class="container">
-  <h4>Payment received!</h4>
+  <h3>Thank you very much for your order!</h3>
+  <h5>A confirmation has been sent to <%= current_user.email %>.</h5>
+  <h5>Your furniture will de delivered to your address .... </h5>
+
+  <div class="confirm-details">
+    <div class="order-confirmation">
+      <strong><p class="confirm-header">Order confirmation</p></strong>
+      <hr>
+      <div class="order-info">
+        <div class="order-address">
+          <strong><p>Delivery address</p></strong>
+          <p><%= current_user.address %></p>
+        </div>
+        <div class="order-num">
+          <strong><p>Order number</p></strong>
+          <p><%= @booking.id %></p>
+        </div>
+        <div class="order-date">
+          <strong><p>Order date</p></strong>
+          <%= Date.today %>
+        </div>
+      </div>
+    </div>
+
+    <div class="renting-item">
+      <strong><p class="confirm-header">Your renting item</p></strong>
+      <hr>
+      <div class="order-items">
+        <% @items.each do |item| %>
+          <div class="order-item-container">
+            <div class="order-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
+            <div class="order-item-desc">
+              <%= item.product.name %><br>
+              <%= humanized_money_with_symbol(item.product.price) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
