@@ -18,12 +18,12 @@ class PaymentsController < ApplicationController
     )
 
     @booking.update(payment: charge.to_json, state: 'paid', amount_cents: @booking.total_amount_cents)
-    redirect_to #boooking confirmation path(@booking)
+    redirect_to confirmation_booking_path(@booking)
 
-  rescue Stripe::CardError => e
-    flash[:alert] = e.message
-    redirect_to #payment new path
-  end
+    rescue Stripe::CardError => e
+      flash[:alert] = e.message
+      render :new
+    end
 
   private
 

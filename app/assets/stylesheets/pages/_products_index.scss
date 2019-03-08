@@ -23,8 +23,9 @@
 
 .order-tag {
   display: inline;
+  padding: 5px;
 }
 
-.order-form-tag {
-  display: inline;
+.form-tag select {
+  width: 120px;
 }

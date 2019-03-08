@@ -6,13 +6,13 @@
       <% @items.each do |item| %>
         <div class="booking-item-container">
           <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
-            <div class="show-desc">
-              <div class="item-desc">
-                <strong><%= item.product.name %></strong><br>
-                <p>some description here</p><br>
-                <%= humanized_money_with_symbol(item.product.price) %>
-              </div>
+          <div class="show-desc">
+            <div class="item-desc">
+              <strong><%= item.product.name %></strong><br>
+              <p>some description here</p><br>
+              <%= humanized_money_with_symbol(item.product.price) %>
             </div>
+          </div>
         </div>
         <hr>
       <% end %>
@@ -29,5 +29,4 @@
       </div>
     </div>
   </div>
-
 </div>
