@@ -21,8 +21,6 @@ puts 'Creating items...'
 Room.destroy_all
 puts 'Creating rooms'
 
-
-
 ############################     Beds     #######################
 material = ["realleather","textile", "solidwood", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
@@ -116,6 +114,25 @@ Product.create!(tables)
 Product.create!(chairs)
 Product.create!(sofas)
 
+p = Product.all
+
+p.each do |product|
+  product.delete unless Product.all.where(name: product[:name]).count == 1
+end
+
+######## test #########
+# d = Product.all.uniq {|e| e[:name] }
+######## test #########
+
+######### creates 3 items for each product ##########
+#########          DO NOT CHANGE           ##########
+Product.all.each do |product|
+  3.times do
+    Item.create(product_id: product.id)
+  end
+end
+#########          DO NOT CHANGE           ##########
+
 rooms_attributes = [
   # some beds
   {
@@ -161,13 +178,10 @@ Product.all.where(category: 'sofa').each do  |product|
    product.rooms << Room.find_by(name: 'living room')
 end
 
-########## creates 3 items for each product ##########
-##########          DO NOT CHANGE           ##########
-Product.all.each do |product|
-  3.times do
-    Item.create(product_id: product.id)
-  end
-end
-##########          DO NOT CHANGE           ##########
-
 puts 'Finished!'
+
+
+
+
+
+
