@@ -1,4 +1,4 @@
-class BookingsController < ApplicationController
+  class BookingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :create]
 
   def show
@@ -37,6 +37,10 @@ class BookingsController < ApplicationController
   def confirmation
     @booking = current_user.bookings.where(state: 'paid').find(params[:id])
     @items = @booking.items
+  end
+
+  def booking_duration
+    (@booking.ends_at - @booking.starts_at).to_i
   end
 
   private

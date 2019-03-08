@@ -32,12 +32,15 @@
             <div class="order-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
             <div class="order-item-desc">
               <%= item.product.name %><br>
-              <%= humanized_money_with_symbol(item.product.price) %>
+              <p><%= humanized_money_with_symbol(item.product.price) %> per day</p>
             </div>
           </div>
         <% end %>
       </div>
+      <%= link_to "Rent another furniture", root_path, class: "btn btn-primary btn-another" %>
     </div>
+
+
   </div>
 </div>
 
