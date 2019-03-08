@@ -4,4 +4,7 @@ class Product < ApplicationRecord
   has_many :rooms, through: :product_rooms
 
   monetize :price_cents
+
+  paginates_per 30
+
 end

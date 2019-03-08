@@ -29,3 +29,20 @@
 .form-tag select {
   width: 120px;
 }
+
+.pagination > li > a, .pagination > li > span {
+  color: #1BBB99;
+}
+
+.pagination > li > a:hover, .pagination > li > span {
+  color: #1BBB99;
+}
+
+.pagination > .disabled > span, .pagination > .disabled > span:hover, .pagination > .disabled > span:focus, .pagination > .disabled > a, .pagination > .disabled > a:hover, .pagination > .disabled > a:focus {
+  color: #1BBB99;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+  background-color: #1BBB99;
+  border-color: #1BBB99;
+}

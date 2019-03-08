@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   def index
     @booking = Booking.find(params[:booking_id])
-    @products = Product.all
+    @products = Product.order(:name).page(params[:page]) #for gem kaminari
     @products = @products.joins(rooms: :product_rooms).distinct.where(rooms: { name: params[:product_room] }) if params[:product_room].present? unless params[:product_room] == "all"
     @products = @products.where(category: params[:category]) if params[:category].present? unless params[:category] == "all"
     @products = @products.where(style: params[:style]) if params[:style].present? unless params[:style] == "all"
