@@ -1,0 +1,45 @@
+.confirm-details {
+  margin-top: 50px;
+}
+
+.order-confirmation {
+  margin-bottom: 50px;
+}
+
+.confirm-header {
+  color: #218A78;
+}
+
+.order-info {
+  display: flex;
+}
+
+.order-address {
+  flex: 0 0 30%;
+}
+.order-num {
+  flex: 0 0 30%;
+
+}
+.order-date {
+  flex: 0 0 30%;
+}
+
+.order-item-container {
+  display: flex;
+  justify-content: space-around;
+  height: 123px;
+}
+
+.order-photo-container {
+  flex: 0 0 15%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 123px;
+}
+
+.order-item-desc {
+  flex: 0 0 70%;
+  height: 123px;
+}
+
