@@ -39,7 +39,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Bed',
+        category:             'bed',
         price_cents:          product[:price_cents]
       }
     end
@@ -61,7 +61,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Table',
+        category:             'table',
         price_cents:          product[:price_cents]
       }
     end
@@ -83,7 +83,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Chair',
+        category:             'chair',
         price_cents:          product[:price_cents]
       }
     end
@@ -105,7 +105,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Sofa',
+        category:             'sofa',
         price_cents:          product[:price_cents]
       }
     end
@@ -127,7 +127,7 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Wardrobe',
+        category:             'wardrobe',
         price_cents:          product[:price_cents]
       }
     end
