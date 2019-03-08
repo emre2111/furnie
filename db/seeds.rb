@@ -9,20 +9,19 @@ require './lib/tasks/scrape'
 
 puts 'Cleaning database...'
 
-Product.destroy_all
-puts 'Creating products...'
+ProductRoom.destroy_all
+puts 'Destroying product rooms'
 
 Room.destroy_all
-puts 'Creating rooms'
+puts 'Destroying rooms'
 
-ProductRoom.destroy_all
-puts 'Creating product rooms'
+Product.destroy_all
+puts 'Destroying products...'
 
 Item.destroy_all
-puts 'Creating items...'
+puts 'Destroying items...'
 
-
-
+puts 'Scraping furniture products, creating rooms and items.....'
 
 ############################     Beds     #######################
 material = ["realleather","textile", "solidwood", "syntheticleather"]
@@ -39,12 +38,13 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Bed',
+        category:             'bed',
         price_cents:          product[:price_cents]
       }
     end
   end
 end
+Product.create!(beds)
 
 ############################     Tables     #######################
 material = ["solidwood","glass", "woodsemisolid" ]
@@ -61,12 +61,13 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Table',
+        category:             'table',
         price_cents:          product[:price_cents]
       }
     end
   end
 end
+Product.create!(tables)
 
 ############################     Chairs     #######################
 material = ["realleather","textile", "plastic", "syntheticleather"]
@@ -83,12 +84,13 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Chair',
+        category:             'chair',
         price_cents:          product[:price_cents]
       }
     end
   end
 end
+Product.create!(chairs)
 
 ############################     Sofas     #######################
 material = ["realleather","textile", "syntheticleather"]
@@ -105,12 +107,13 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Sofa',
+        category:             'sofa',
         price_cents:          product[:price_cents]
       }
     end
   end
 end
+Product.create!(sofas)
 
 ############################     wardrobe     #######################
 material = ["realleather","glass", "solidwood", "wood"]
@@ -127,18 +130,82 @@ material.each do |m|
         photo:                product[:photo],
         style:                s,
         material:             m,
-        category:             'Wardrobe',
+        category:             'wardrobe',
         price_cents:          product[:price_cents]
       }
     end
   end
 end
-
-Product.create!(beds)
-Product.create!(tables)
-Product.create!(chairs)
-Product.create!(sofas)
 Product.create!(wardrobes)
+
+############################     chests     #######################
+material = ["realleather","glass", "solidwood", "wood"]
+style = ["nature","industrial", "scandinavian", "modern"]
+chests = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/kommoden-und-sideboards/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      chests <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'shelve',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(chests)
+
+############################     desks     #######################
+material = ["solidwood","glass", "woodsemisolid" ]
+style = ["nature", "industrial", "scandinavian", "modern"]
+desks = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/bueromoebel/buerotische/schreibtische/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      desks <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'desk',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(desks)
+
+############################     desk chairs     #######################
+material = ["realleather","textile", "plastic", "syntheticleather"]
+style = ["nature", "industrial", "scandinavian", "modern"]
+deskchairs = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/bueromoebel/buerostuehle-shop/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      deskchairs <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'desk chair',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(deskchairs)
 
 ##########   links the product category to the room category   ##########
 ##########     add to list if new category is added above      ##########
@@ -174,6 +241,9 @@ rooms_attributes = [
     name:                 'living room'
   },
   {
+    name:                 'bathroom'
+  },
+  {
     name:                 'other'
   }
 ]
@@ -201,6 +271,30 @@ Product.all.where(category: 'chair').each do  |product|
 end
 
 Product.all.where(category: 'sofa').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'wardrobe').each do  |product|
+   product.rooms << Room.find_by(name: 'bedroom')
+end
+
+Product.all.where(category: 'shelve').each do  |product|
+   product.rooms << Room.find_by(name: 'bedroom')
+end
+
+Product.all.where(category: 'shelve').each do  |product|
+   product.rooms << Room.find_by(name: 'kitchen')
+end
+
+Product.all.where(category: 'shelve').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'desk').each do  |product|
+   product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'desk chair').each do  |product|
    product.rooms << Room.find_by(name: 'living room')
 end
 

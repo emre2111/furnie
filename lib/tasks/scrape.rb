@@ -10,7 +10,7 @@ def scraper(url)
 
     name = product.search('.article-tile__name').first.text.split[1]
     price_cents = product.search('.article__price-wrap .article__price').first.text.split[0]
-    price_cents = 1200 if price_cents == 'ab'
+    price_cents = 1000 if price_cents == 'ab'
     photo = product.search('.article-tile__image').first['data-echo']
 
 
