@@ -45,6 +45,7 @@ material.each do |m|
     end
   end
 end
+Product.create!(beds)
 
 ############################     Tables     #######################
 material = ["solidwood","glass", "woodsemisolid" ]
@@ -67,6 +68,7 @@ material.each do |m|
     end
   end
 end
+Product.create!(tables)
 
 ############################     Chairs     #######################
 material = ["realleather","textile", "plastic", "syntheticleather"]
@@ -89,6 +91,7 @@ material.each do |m|
     end
   end
 end
+Product.create!(chairs)
 
 ############################     Sofas     #######################
 material = ["realleather","textile", "syntheticleather"]
@@ -111,6 +114,7 @@ material.each do |m|
     end
   end
 end
+Product.create!(sofas)
 
 ############################     wardrobe     #######################
 material = ["realleather","glass", "solidwood", "wood"]
@@ -133,6 +137,8 @@ material.each do |m|
     end
   end
 end
+Product.create!(wardrobes)
+
 
 ############################     chests     #######################
 material = ["realleather","glass", "solidwood", "wood"]
@@ -155,13 +161,56 @@ material.each do |m|
     end
   end
 end
-
-Product.create!(beds)
-Product.create!(tables)
-Product.create!(chairs)
-Product.create!(sofas)
-Product.create!(wardrobes)
 Product.create!(chests)
+
+############################     desks     #######################
+material = ["solidwood","glass", "woodsemisolid" ]
+style = ["nature", "industrial", "scandinavian", "modern"]
+desks = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/bueromoebel/buerotische/schreibtische/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      desks <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'desk',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(desks)
+
+############################     desk chairs     #######################
+material = ["realleather","textile", "plastic", "syntheticleather"]
+style = ["nature", "industrial", "scandinavian", "modern"]
+deskchairs = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/bueromoebel/buerostuehle-shop/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      deskchairs <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                3,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'desk chair',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(deskchairs)
+
+
+
 
 ##########   links the product category to the room category   ##########
 ##########     add to list if new category is added above      ##########
