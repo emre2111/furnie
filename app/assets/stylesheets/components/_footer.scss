@@ -6,10 +6,13 @@
   padding: 0px 50px;
   color: rgba(0,0,0,0.3);
   font-family: 'Oswald', sans-serif;
+  z-index: -1;
+
 }
 .footer-links {
   display: flex;
   align-items: center;
+  z-index: -1;
 }
 .footer-links a {
   color: black;
@@ -19,7 +22,7 @@
   padding: 0px 10px;
 }
 .footer-links a:hover {
-  color: white;
+  color: #218A78;
   opacity: 1;
 }
 .footer .fa-heart {
@@ -27,5 +30,5 @@
 }
 
 .footer-copyright:hover {
-  color: white;
+  color: #218A78;
 }
