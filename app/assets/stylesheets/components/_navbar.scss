@@ -13,11 +13,16 @@
 
 #nav-name {
   color: #FFFFFF;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 32px;
 }
 
 /* Logo */
-.navbar-wagon-brand img {
+.navbar-wagon-brand {
   height: 50px;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 /* User Avatar */

@@ -6,6 +6,7 @@
     <title>furnie</title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500" rel="stylesheet">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application' %>
     <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
@@ -13,7 +14,10 @@
   <body>
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
+    <div class="page-height">
     <%= yield %>
+
+    </div>
 
     <%= yield(:after_js) %>
     <%= javascript_include_tag 'application' %>

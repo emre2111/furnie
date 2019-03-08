@@ -1,8 +1,13 @@
 <div class="container">
-  <div class="form form-inline">
-    <%= simple_form_for(@booking) do |f| %>
-      <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Until when will you need the furnitures?" %>
-      <%= f.button :submit, "find furnitures", class: "btn btn-primary"%>
-    <% end %>
-  </div>
+  <div class="homepage-image-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('assets/homepage.jpg')" class="homepage-image">
+    <div class="landingpage-header">
+      <h1>Welcome to Furnie</h1>
+      <div class="form form-inline date-form">
+        <%= simple_form_for(@booking) do |f| %>
+          <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Until when will you need the furnitures?" %>
+          <%= f.button :submit, "find furnitures", class: "btn btn-primary"%>
+        <% end %>
+      </div>
+    </div>
+</div>
 </div>
