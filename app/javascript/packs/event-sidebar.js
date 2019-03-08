@@ -1,10 +1,10 @@
 function sidebar(){
-  const sidebar_form = document.querySelector(".form-sidebar");
+  const sidebarForm = document.querySelector(".form-sidebar");
 
-  sidebar_form.addEventListener("change", (event) => {
-    sidebar_form.submit();
+  sidebarForm.addEventListener("change", (event) => {
+    sidebarForm.submit();
   });
 
 }
-
-export { sidebar };
+sidebar();
+export default sidebar;
