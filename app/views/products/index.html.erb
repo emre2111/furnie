@@ -11,5 +11,6 @@
   <% @products.each do |product| %>
     <%= render 'shared/card', product: product, booking: @booking %>
   <% end %>
+  <%= paginate @products %>
  </div>
 </div>
