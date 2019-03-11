@@ -4,7 +4,10 @@
       <h1>Welcome to Furnie</h1>
       <div class="form form-inline date-form">
         <%= simple_form_for(@booking) do |f| %>
-          <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Until when will you need the furnitures?" %>
+          <%= f.input :starts_at, as: :string, input_html: { id: "start_date" },
+          required: false, placeholder: "From when?", label: false %>
+          <%= f.input :ends_at, as: :string, input_html: { id: "end_date" },
+          required: false, placeholder: "Until when?", label: false %>
           <%= f.button :submit, "find furnitures", class: "btn btn-primary"%>
         <% end %>
       </div>

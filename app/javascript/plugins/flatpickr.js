@@ -4,8 +4,8 @@ import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin";
 
-flatpickr("#datepicker", {
+flatpickr("#start_date", {
   altInput: true,
   // enableTime: true, <- you can pick time
-  // "plugins": [new rangePlugin({ input: "#datepicker" })] <- to do range
+  "plugins": [new rangePlugin({ input: "#end_date" })]
 });
