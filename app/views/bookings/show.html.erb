@@ -22,7 +22,7 @@
       <h4>Order overview</h4>
       <div class="payment-detail">
 
-        <p>Subtotal <%= humanized_money_with_symbol(@booking.items.sum { |item| item.product.price } * (@booking.ends_at - @booking.starts_at).to_i) %></p>
+        <p>Subtotal <%= humanized_money_with_symbol(@booking.items.sum { |item| item.product.price } * (@booking.ends_at - @booking.starts_at + 1).to_i) %></p>
         <p>Delivery, setup and pickup €50.00</p>
         <hr>
         <strong><p>Total <%= humanized_money_with_symbol(@booking.total_amount) %></p></strong>
