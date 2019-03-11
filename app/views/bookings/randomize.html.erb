@@ -1,0 +1,42 @@
+<div class="container-random">
+  <h1>Your random furnitures</h1>
+
+  <div class="row">
+    <div class="nav" role="tablist">
+      <% @random.each_with_index do |product, index| %>
+        <div role="presentation" class="<%= "active" if index.zero? %>">
+          <div class="random-card col-xs-3 col-sm-2" href="#product-<%= product.id %>" aria-controls="product-<%= product.id %>" role="tab" data-toggle="tab">
+            <div class="card-container card-container-random">
+              <div class="card-category" style="background-image: url('<%=  product.photo %>')">
+                <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
+              </div>
+              <div class="product-desc">
+                <h4><%= product.name %></h4>
+                <h4><strong><%= humanized_money_with_symbol(product.price) %></strong> per day</h4>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="tab-content">
+      <% @random.each_with_index do |product, index| %>
+        <div role="tabpanel" class="tab-pane <%= "active" if index.zero? %>" id="product-<%= product.id %>" >
+          <div class="product-desc appear-hover">
+            <h3><strong><%= humanized_money_with_symbol(product.price *
+              (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total
+            </h3>
+            <p><em>Renting period selected: <%= (@booking.ends_at - @booking.starts_at + 1 ).to_i %> days</em></p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+            <div>
+              <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, product), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

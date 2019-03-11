@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
   end
 
-
   private
 
   def order_by_price(order)
