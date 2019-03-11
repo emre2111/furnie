@@ -1,0 +1,15 @@
+<h1>Your random furnitures</h1>
+
+<% @random.each do |product| %>
+    <div class="col-sm-12 col-md-6 col-lg-2">
+    <div class="card-container card-container-random">
+      <div class="card-category" style="background-image: url('<%=  product.photo %>')">
+        <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
+      </div>
+      <div class="product-desc">
+        <h4><%= product.name %></h4>
+        <h4><strong><%= humanized_money_with_symbol(product.price) %></strong> per day</h4>
+      </div>
+    </div>
+  </div>
+  <% end %>

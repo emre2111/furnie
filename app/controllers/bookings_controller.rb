@@ -43,6 +43,18 @@
     (@booking.ends_at - @booking.starts_at).to_i
   end
 
+  def randomize
+    @bed = Product.where(category: "bed").sample
+    @table = Product.where(category: "table").sample
+    @chair = Product.where(category: "chair").sample
+    @sofa = Product.where(category: "sofa").sample
+    # @desk = Product.where(category: "desk").sample
+    # @desk_chair = Product.where(category: "desk chair").sample
+    @wardrobe = Product.where(category: "wardrobe").sample
+    @shelve = Product.where(category: "shelve").sample
+    @random = [@bed, @table, @chair, @sofa, @wardrobe, @shelve]
+  end
+
   private
 
   def booking_params

@@ -1,4 +1,8 @@
   <div>
+    <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-primary" %>
+  </div>
+
+  <div>
     <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
 
     <% product_room_options = Room.pluck(:name).uniq %>

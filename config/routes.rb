@@ -5,11 +5,17 @@ Rails.application.routes.draw do
   resources :bookings, only: [:show, :new, :create, :edit, :update] do
     member do
       get :confirmation
+      get :randomize
     end
 
     resources :products, only: [:index, :show, :new, :create] do
       resources :booking_items, only: [:create]
     end
     resources :payments, only: [:new, :create]
+    # resources :randomizer do
+    #   member do
+    #     get :randomize
+    #   end
+    # end
   end
 end
