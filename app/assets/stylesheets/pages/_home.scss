@@ -8,12 +8,13 @@ body {
   background-color: #FFFFFF;
 }
 
-h1 h2 h3 h4 h5 {
+h1, h2, h3, h4, h5 {
   font-family: 'Ubuntu', sans-serif;
 }
 
-body p {
+body > p {
   font-family: 'Cabin', sans-serif;
+  font-weight: 400;
 }
 
 .page-height {
@@ -26,6 +27,10 @@ li {
 
 a {
   text-decoration: none;
+}
+
+label {
+  font-weight: 400;
 }
 
 .homepage-image-container {

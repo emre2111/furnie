@@ -1,55 +1,83 @@
-  <%#= raise %>
   <div>
+
     <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-primary" %>
   </div>
 
   <div>
     <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
 
-    <% product_room_options = Room.pluck(:name).uniq %>
+    <% product_room_options = Room.pluck(:name).uniq.sort %>
     <% product_room_options << "all" %>
 
-    <% category_options = @products.pluck(:category).uniq %>
-    <% category_options << "all" %>
 
-    <% style_options = @products.pluck(:style).uniq %>
-    <% style_options << "all" %>
+      <% category_options = @products.pluck(:category).uniq.sort %>
+      <% category_options << "all" %>
 
-    <% material_options = @products.pluck(:material).uniq %>
-    <% material_options << "all" %>
+      <% style_options = @products.pluck(:style).uniq.sort %>
+      <% style_options << "all" %>
 
-    <div class="form-tag room-category">
-      <div class="label_tag">
-        <%= label_tag(:product_room, "Room category:") %>
+      <% material_options = @products.pluck(:material).uniq.sort %>
+      <% material_options << "all" %>
+
+      <div class="form-tag room-category">
+        <div class="label_tag">
+          <%= label_tag(:product_room, "ROOM") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag">
+          <% product_room_options.each do |option| %>
+            <% checked = params[:product_room] == option %>
+            <label for="product_room<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label" ><%= option %></label>
+            <input <%= 'checked' if checked %> type="radio" class="hidden" id="product_room<%= option %>" value="<%= option %>" name="product_room"><br>
+          <% end %>
+        </div>
+      <hr>
       </div>
-      <div class="select_tag">
-        <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
+
+      <div class="form-tag furniture-category">
+        <div class="label_tag">
+          <%= label_tag(:category, "FURNITURE") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag">
+          <% category_options.each do |option| %>
+            <% checked = params[:category] == option %>
+            <label for="category<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
+            <input <%= 'checked' if checked %> type="radio" class="hidden" id="category<%= option %>" value="<%= option %>" name="category"><br>
+          <% end %>
+        </div>
+      <hr>
       </div>
-    </div>
-    <div class="form-tag furniture-category">
-      <div class="label_tag">
-        <%= label_tag(:category, "Furniture category:") %>
+
+      <div class="form-tag style">
+        <div class="label_tag">
+          <%= label_tag(:style, "STYLE") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag">
+          <% style_options.each do |option| %>
+            <% checked = params[:style] == option %>
+            <label for="style<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
+            <input <%= 'checked' if checked %> type="radio" class="hidden" id="style<%= option %>" value="<%= option %>" name="style"><br>
+          <% end %>
+        </div>
+      <hr>
       </div>
-      <div class="select_tag">
-        <%= select_tag :category, options_for_select(category_options.sort, params[:category]) %>
+
+      <div class="form-tag material">
+        <div class="label_tag">
+          <%= label_tag(:material, "MATERIAL") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag">
+          <% material_options.each do |option| %>
+            <% checked = params[:material] == option %>
+            <label for="material<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
+            <input <%= 'checked' if checked %> type="radio" class="hidden" id="material<%= option %>" value="<%= option %>" name="material"><br>
+          <% end %>
+        </div>
+      <hr>
       </div>
-    </div>
-    <div class="form-tag style">
-      <div class="label_tag">
-        <%= label_tag(:style, "Style:") %>
-      </div>
-      <div class="select_tag">
-        <%= select_tag :style, options_for_select(style_options.sort, params[:style]) %>
-      </div>
-    </div>
-    <div class="form-tag material">
-      <div class="label_tag">
-        <%= label_tag(:material, "Material:") %>
-      </div>
-      <div class="select_tag">
-        <%= select_tag :material, options_for_select(material_options.sort, params[:material]) %>
-      </div>
-    </div>
     <% end %>
   </div>
 
@@ -65,7 +93,6 @@
       <%= f.button :submit, "Change dates", class: "btn btn-primary"%>
     <% end %>
   </div>
-
 
   <%= content_for(:after_js) do  %>
    <%= javascript_pack_tag "event-sidebar" %>
