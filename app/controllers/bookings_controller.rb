@@ -44,6 +44,7 @@
   end
 
   def randomize
+    @booking = Booking.find(params[:id])
     @bed = Product.where(category: "bed").sample
     @table = Product.where(category: "table").sample
     @chair = Product.where(category: "chair").sample

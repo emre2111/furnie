@@ -1,12 +1,14 @@
 function sidebarFormdate(){
   const sidebarForm = document.querySelector("#edit_booking_7");
-  console.log(typeof sidebarForm)
+  if(sidebarForm){
+    console.log(typeof sidebarForm)
 
-  sidebarForm.addEventListener("change", (event) => {
-  console.log("hello")
+    sidebarForm.addEventListener("change", (event) => {
+    console.log("hello")
 
-    sidebarForm.submit();
-  });
+      sidebarForm.submit();
+    });
+  }
 }
 sidebarFormdate();
 export { sidebarFormdate };
