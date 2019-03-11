@@ -15,6 +15,9 @@ puts 'Destroying product rooms'
 Room.destroy_all
 puts 'Destroying rooms'
 
+BookingItem.destroy_all
+puts 'Destroying items...'
+
 Product.destroy_all
 puts 'Destroying products...'
 
@@ -207,23 +210,23 @@ material.each do |m|
 end
 Product.create!(deskchairs)
 
-##########   links the product category to the room category   ##########
-##########     add to list if new category is added above      ##########
-
+####### delete dublicate products and products that do were not scraped correctly ########
 p = Product.all
-
 p.each do |product|
   product.delete unless Product.all.where(name: product[:name]).count == 1
+  product.delete if product[:price_cents] == 'ab'
+  product.delete if product[:price_cents] < (3000/(365*1.5))
 end
+####### delete dublicate products and products that do were not scraped correctly ########
 
 ######## test #########
 # d = Product.all.uniq {|e| e[:name] }
 ######## test #########
 
-######### creates 3 items for each product ##########
+######### creates 5 items for each product ##########
 #########          DO NOT CHANGE           ##########
 Product.all.each do |product|
-  3.times do
+  5.times do
     Item.create(product_id: product.id)
   end
 end
@@ -249,6 +252,8 @@ rooms_attributes = [
 ]
 
 Room.create!(rooms_attributes)
+
+##########   links the product category to the room category   ##########
 
 Product.all.where(category: 'bed').each do  |product|
    product.rooms << Room.find_by(name: 'bedroom')
@@ -298,10 +303,6 @@ Product.all.where(category: 'desk chair').each do  |product|
    product.rooms << Room.find_by(name: 'living room')
 end
 
+##########     add to list if new product is added above      ##########
+
 puts 'Finished!'
-
-
-
-
-
-
