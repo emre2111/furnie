@@ -4,13 +4,15 @@
  </div>
 
  <div class="products-container">
-  <h1>Furniture available for rent</h1>
+  <h3>Furniture Available For Rent</h3>
   <div class="order_form">
     <%= render 'shared/order_form' %>
   </div>
-  <% @products.each do |product| %>
-    <%= render 'shared/card', product: product, booking: @booking %>
-  <% end %>
+  <div class="product-cards">
+    <% @products.each do |product| %>
+      <%= render 'shared/card', product: product, booking: @booking %>
+    <% end %>
+  </div>
   <%= paginate @products %>
  </div>
 </div>

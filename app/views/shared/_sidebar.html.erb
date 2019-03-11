@@ -1,26 +1,34 @@
   <%#= raise %>
   <div>
     <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %>
-    <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq %>
+    <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq.sort %>
     <% product_room_options << "all" %>
 
-    <% category_options = @products.pluck(:category).uniq %>
+    <% category_options = @products.pluck(:category).uniq.sort %>
     <% category_options << "all" %>
 
-    <% style_options = @products.pluck(:style).uniq %>
+    <% style_options = @products.pluck(:style).uniq.sort %>
     <% style_options << "all" %>
 
-    <% material_options = @products.pluck(:material).uniq %>
+    <% material_options = @products.pluck(:material).uniq.sort %>
     <% material_options << "all" %>
 
     <div class="form-tag room-category">
       <div class="label_tag">
-        <%= label_tag(:product_room, "Room category:") %>
+        <%= label_tag(:product_room, "ROOM") %>
       </div>
       <div class="select_tag">
-        <%= select_tag :product_room, options_for_select(product_room_options.sort, params[:product_room]) %>
+        <% product_room_options.each do |option| %>
+          <% checked = params[:product_room] == option %>
+          <label for="product_room<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %>"><%= option %>
+          </label>
+          <input <%= 'checked' if checked %> type="radio" class="hidden" id="product_room<%= option %>" value="<%= option %>" name="product_room"><br>
+          <%#= label_tag(option) %>
+          <%#= check_box_tag option, option, false, options = { params[:product_room] } %>
+        <% end %>
       </div>
     </div>
+    <hr>
     <div class="form-tag furniture-category">
       <div class="label_tag">
         <%= label_tag(:category, "Furniture category:") %>
@@ -65,3 +73,32 @@
   <%= content_for(:after_js) do  %>
    <%= javascript_pack_tag "event-sidebar" %>
   <% end %>
+
+
+
+<!-- <script>
+  const el = document.querySelector("plus");
+  const ul = ...
+  ul.classList.toggle(display)
+
+  el.addEventListener("click", e =>{...})
+
+</script>
+  <div class="product tab">
+    <h3>product name</h3>
+    <svg>+</svg>
+  </div>
+  <ul class="product-list"> -- display none/show
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <div class="material tab">
+    <h3>material name</h3>
+    <svg>+</svg>
+  </div>
+  <ul class="material-list"> -- display none/show
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul> -->
