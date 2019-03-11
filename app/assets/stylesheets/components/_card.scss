@@ -1,19 +1,29 @@
 .card-container {
   padding: 6px;
-  // border: 1px solid white;
-  margin-block-end: 30px;
+ // border: 1px solid white;
+ margin-block-end: 30px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .card-container:hover {
   opacity: 0.9;
-  transform: scale(1.01);
-  box-shadow: 5px 10px 10px rgba(0,0,0,0.2);
+  transform: scale(1.015);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
 }
 
 .card-container:active {
   opacity: 1;
 }
 
+.container-random {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.active-border .card-container-random {
+  border-bottom: #1BBB99 solid 10px;
+}
 .card-category {
   background-size: contain;
   background-repeat: no-repeat;

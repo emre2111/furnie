@@ -1,7 +1,14 @@
   <div>
-    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %>
-      <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq.sort %>
-      <% product_room_options << "all" %>
+
+    <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-primary" %>
+  </div>
+
+  <div>
+    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
+
+    <% product_room_options = Room.pluck(:name).uniq.sort %>
+    <% product_room_options << "all" %>
+
 
       <% category_options = @products.pluck(:category).uniq.sort %>
       <% category_options << "all" %>
