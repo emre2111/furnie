@@ -1,1 +1,33 @@
+.category-label {
+  color: #292D33;
+  opacity: 0.6;
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.active {
+    opacity: 1;
+    border-bottom: 1.6px solid #218A78;
+  }
+}
 
+.add-button {
+  position: absolute;
+  right: 17px;
+  // top: 4px;
+  transition: all ease 0.5s;
+}
+
+.select_tag{
+  opacity: 0;
+  height: 0;
+  // transition: all ease 1s;
+}
+
+.select_show{
+  opacity: 1;
+  height: auto;
+}
+.btn_rotated{
+  transform: rotate(-45deg)
+}
