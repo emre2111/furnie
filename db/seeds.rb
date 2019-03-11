@@ -27,7 +27,7 @@ puts 'Destroying items...'
 puts 'Scraping furniture products, creating rooms and items.....'
 
 ############################     Beds     #######################
-material = ["realleather","textile", "solidwood", "syntheticleather"]
+material = ["realleather", "textile", "solidwood", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
 beds = []
 material.each do |m|
@@ -37,7 +37,7 @@ material.each do |m|
       beds <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -50,7 +50,7 @@ end
 Product.create!(beds)
 
 ############################     Tables     #######################
-material = ["solidwood","glass", "woodsemisolid" ]
+material = ["solidwood", "glass", "woodsemisolid" ]
 style = ["nature", "industrial", "scandinavian", "modern"]
 tables = []
 material.each do |m|
@@ -60,7 +60,7 @@ material.each do |m|
       tables <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -73,7 +73,7 @@ end
 Product.create!(tables)
 
 ############################     Chairs     #######################
-material = ["realleather","textile", "plastic", "syntheticleather"]
+material = ["realleather", "textile", "plastic", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
 chairs = []
 material.each do |m|
@@ -83,7 +83,7 @@ material.each do |m|
       chairs <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -96,7 +96,7 @@ end
 Product.create!(chairs)
 
 ############################     Sofas     #######################
-material = ["realleather","textile", "syntheticleather"]
+material = ["realleather", "textile", "syntheticleather"]
 style = ["industrial", "scandinavian", "modern"]
 sofas = []
 material.each do |m|
@@ -106,7 +106,7 @@ material.each do |m|
       sofas <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -119,7 +119,7 @@ end
 Product.create!(sofas)
 
 ############################     wardrobe     #######################
-material = ["realleather","glass", "solidwood", "wood"]
+material = ["realleather", "glass", "solidwood", "wood"]
 style = ["nature","industrial", "scandinavian", "modern"]
 wardrobes = []
 material.each do |m|
@@ -129,7 +129,7 @@ material.each do |m|
       wardrobes <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -142,7 +142,7 @@ end
 Product.create!(wardrobes)
 
 ############################     chests     #######################
-material = ["realleather","glass", "solidwood", "wood"]
+material = ["realleather", "glass", "solidwood", "wood"]
 style = ["nature","industrial", "scandinavian", "modern"]
 chests = []
 material.each do |m|
@@ -152,7 +152,7 @@ material.each do |m|
       chests <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -165,7 +165,7 @@ end
 Product.create!(chests)
 
 ############################     desks     #######################
-material = ["solidwood","glass", "woodsemisolid" ]
+material = ["solidwood", "glass", "woodsemisolid" ]
 style = ["nature", "industrial", "scandinavian", "modern"]
 desks = []
 material.each do |m|
@@ -175,7 +175,7 @@ material.each do |m|
       desks <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -188,7 +188,7 @@ end
 Product.create!(desks)
 
 ############################     desk chairs     #######################
-material = ["realleather","textile", "plastic", "syntheticleather"]
+material = ["realleather", "textile", "plastic", "syntheticleather"]
 style = ["nature", "industrial", "scandinavian", "modern"]
 deskchairs = []
 material.each do |m|
@@ -198,7 +198,7 @@ material.each do |m|
       deskchairs <<  {
         name:                 product[:name],
         sku:                  rand(10 ** 10).to_s,
-        stock:                3,
+        stock:                5,
         photo:                product[:photo],
         style:                s,
         material:             m,
@@ -210,18 +210,63 @@ material.each do |m|
 end
 Product.create!(deskchairs)
 
+############################     lamps     #######################
+material = ["metal", "solidwood", "woodsemisolid"]
+style = ["industrial", "nature"]
+lamps = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/innenleuchten-shop/stehleuchten/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      lamps <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                5,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'lamp',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(lamps)
+
+
+############################     bathroom lamps, only glass     #######################
+material = ["glass"]
+style = ["modern"]
+bathroom_lamps = []
+material.each do |m|
+  style.each do |s|
+    url = "https://www.home24.de/kategorie/innenleuchten-shop/badezimmerleuchten/?material=#{m}&styleFilter=#{s}Style"
+    scraper(url).each do |product|
+      bathroom_lamps <<  {
+        name:                 product[:name],
+        sku:                  rand(10 ** 10).to_s,
+        stock:                5,
+        photo:                product[:photo],
+        style:                s,
+        material:             m,
+        category:             'lamp',
+        price_cents:          product[:price_cents]
+      }
+    end
+  end
+end
+Product.create!(bathroom_lamps)
+
+
 ####### delete dublicate products and products that do were not scraped correctly ########
 p = Product.all
 p.each do |product|
   product.delete unless Product.all.where(name: product[:name]).count == 1
   product.delete if product[:price_cents] == 'ab'
-  product.delete if product[:price_cents] < (3000/(365*1.5))
+  product.delete if product[:price_cents] < (2500/(365*1.5))
+  product.delete unless product[:name].to_s.match(/\d+/) == nil
+  product.delete unless product[:name].to_s.match(/\W+/) == nil
 end
-####### delete dublicate products and products that do were not scraped correctly ########
-
-######## test #########
-# d = Product.all.uniq {|e| e[:name] }
-######## test #########
 
 ######### creates 5 items for each product ##########
 #########          DO NOT CHANGE           ##########
@@ -256,23 +301,17 @@ Room.create!(rooms_attributes)
 ##########   links the product category to the room category   ##########
 
 Product.all.where(category: 'bed').each do  |product|
-   product.rooms << Room.find_by(name: 'bedroom')
+  product.rooms << Room.find_by(name: 'bedroom')
 end
 
 Product.all.where(category: 'table').each do  |product|
-   product.rooms << Room.find_by(name: 'living room')
-end
-
-Product.all.where(category: 'table').each do  |product|
-   product.rooms << Room.find_by(name: 'kitchen')
+  product.rooms << Room.find_by(name: 'living room')
+  product.rooms << Room.find_by(name: 'kitchen')
 end
 
 Product.all.where(category: 'chair').each do  |product|
-   product.rooms << Room.find_by(name: 'kitchen')
-end
-
-Product.all.where(category: 'chair').each do  |product|
-   product.rooms << Room.find_by(name: 'living room')
+  product.rooms << Room.find_by(name: 'kitchen')
+  product.rooms << Room.find_by(name: 'living room')
 end
 
 Product.all.where(category: 'sofa').each do  |product|
@@ -284,15 +323,9 @@ Product.all.where(category: 'wardrobe').each do  |product|
 end
 
 Product.all.where(category: 'shelve').each do  |product|
-   product.rooms << Room.find_by(name: 'bedroom')
-end
-
-Product.all.where(category: 'shelve').each do  |product|
-   product.rooms << Room.find_by(name: 'kitchen')
-end
-
-Product.all.where(category: 'shelve').each do  |product|
-   product.rooms << Room.find_by(name: 'living room')
+  product.rooms << Room.find_by(name: 'bedroom')
+  product.rooms << Room.find_by(name: 'kitchen')
+  product.rooms << Room.find_by(name: 'living room')
 end
 
 Product.all.where(category: 'desk').each do  |product|
@@ -301,6 +334,13 @@ end
 
 Product.all.where(category: 'desk chair').each do  |product|
    product.rooms << Room.find_by(name: 'living room')
+end
+
+Product.all.where(category: 'lamp').each do  |product|
+  product.rooms << Room.find_by(name: 'living room') unless product[:material] == 'glass'
+  product.rooms << Room.find_by(name: 'bedroom') unless product[:material] == 'glass'
+  product.rooms << Room.find_by(name: 'kitchen') unless product[:material] == 'glass'
+  product.rooms << Room.find_by(name: 'bathroom') if product[:material] == 'glass'
 end
 
 ##########     add to list if new product is added above      ##########
