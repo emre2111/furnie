@@ -6,7 +6,14 @@ $lightgreen: #1BBB99;
 
 body {
   background-color: #FFFFFF;
+}
+
+h1 h2 h3 h4 h5 {
   font-family: 'Ubuntu', sans-serif;
+}
+
+body p {
+  font-family: 'Cabin', sans-serif;
 }
 
 .page-height {
@@ -52,6 +59,12 @@ a {
   color: #FFFFFF;
   font-family: 'Prata', sans-serif;
   font-size: 80px;
+}
+
+.landingpage-para {
+  font-size: 23px;
+  color: #FFFFFF;
+  font-weight: lighter;
 }
 
 .form-group .form-control-label{

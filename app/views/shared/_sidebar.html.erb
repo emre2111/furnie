@@ -1,16 +1,16 @@
+  <%#= raise %>
   <div>
-    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
-
-    <% product_room_options = Room.pluck(:name).uniq %>
+    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %>
+    <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq %>
     <% product_room_options << "all" %>
 
-    <% category_options = Product.pluck(:category).uniq %>
+    <% category_options = @products.pluck(:category).uniq %>
     <% category_options << "all" %>
 
-    <% style_options = Product.pluck(:style).uniq %>
+    <% style_options = @products.pluck(:style).uniq %>
     <% style_options << "all" %>
 
-    <% material_options = Product.pluck(:material).uniq %>
+    <% material_options = @products.pluck(:material).uniq %>
     <% material_options << "all" %>
 
     <div class="form-tag room-category">
@@ -49,32 +49,19 @@
   </div>
 
   <div class="form form-inline">
-    <%= simple_form_for(@booking, html: {class: "date-picker-index"}) do |f| %>
-    <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
+    <%#= simple_form_for(@booking, html: {class: "date-picker-index"}) do |f| %>
+    <%#= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
+    <%# end %>
+    <%= simple_form_for(@booking) do |f| %>
+      <%= f.input :starts_at, as: :string, input_html: { id: "start_date" },
+      required: false, placeholder: "From when?", label: false %>
+      <%= f.input :ends_at, as: :string, input_html: { id: "end_date" },
+      required: false, placeholder: "Until when?", label: false %>
+      <%= f.button :submit, "Change dates", class: "btn btn-primary"%>
     <% end %>
   </div>
 
+
   <%= content_for(:after_js) do  %>
    <%= javascript_pack_tag "event-sidebar" %>
-   <%#= javascript_pack_tag "event-date" %>
   <% end %>
-<%#= form_tag booking_products_path(@booking), method: :get do %>
-  <%#= label_tag(:name, "Room") %>
-  <%#= select_tag :name, options_for_select(Room.pluck(:name)) %>
-  <%#= submit_tag "Search" %>
-<%# end %>
-<%#= form_tag booking_products_path(@booking), method: :get do %>
-  <%#= label_tag(:product_category, "Category") %>
-  <%#= select_tag :product_category, options_for_select(Product.pluck(:product_category).uniq.sort) %>
-  <%#= submit_tag "Search" %>
-<%# end %>
-<%#= form_tag booking_products_path(@booking), method: :get do %>
-  <%#= label_tag(:style, "Style") %>
-  <%#= select_tag :style, options_for_select(Product.pluck(:style)) %>
-  <%#= submit_tag "Search" %>
-<%# end %>
-  <%#= form_tag booking_products_path(@booking), method: :get do %>
-  <%#= label_tag(:material, "Material") %>
-  <%#= select_tag :material, options_for_select(Product.pluck(:material)) %>
-  <%#= submit_tag "Search" %>
-<%# end %>
