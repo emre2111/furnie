@@ -2,11 +2,13 @@
   padding: 6px;
  // border: 1px solid white;
  margin-block-end: 30px;
+   box-shadow: 0 0 10px rgba(0,0,0,0.2);
+
 }
 
 .card-container:hover {
   opacity: 0.9;
-  transform: scale(1.01);
+  transform: scale(1.015);
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
