@@ -6,7 +6,14 @@ $lightgreen: #1BBB99;
 
 body {
   background-color: #FFFFFF;
+}
+
+h1 h2 h3 h4 h5 {
   font-family: 'Ubuntu', sans-serif;
+}
+
+body p {
+  font-family: 'Cabin', sans-serif;
 }
 
 .page-height {
@@ -44,14 +51,21 @@ a {
 
 .landingpage-header {
   position: absolute;
-  top: 128px;
-  left: 88px;
+  top: 228px;
+  left: 190px;
 }
 
 .landingpage-header h1 {
   color: #FFFFFF;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Prata', sans-serif;
   font-size: 80px;
+}
+
+.landingpage-para {
+
+  font-size: 23px;
+  color: #FFFFFF;
+  font-weight: lighter;
 }
 
 .form-group .form-control-label{
@@ -59,4 +73,22 @@ a {
   font-weight: ligther;
   margin-right: 50px;
   font-size: 23px;
+}
+
+.form {
+  padding-top: 10px;
+}
+
+.form-control {
+  height: 49px;
+  margin-right: 12px;
+}
+
+  a.login {
+  color: white;
+  text-decoration: none;
+  position: absolute;
+  top: 28px;
+  right: 48px;
+
 }

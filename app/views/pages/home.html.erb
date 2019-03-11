@@ -1,11 +1,19 @@
 <div class="container">
-  <div class="homepage-image-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('assets/homepage.jpg')" class="homepage-image">
+  <div class="homepage-image-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.10stunninghomes.com/wp-content/uploads/minimalist-apartment-ukraine.jpg')" class="homepage-image">
+    <a class= "login" href="/link/to/page2">Login</a>
     <div class="landingpage-header">
       <h1>Welcome to Furnie</h1>
+      <p class="landingpage-para">Furnie offers a furniture renting service in Berlin.</p>
       <div class="form form-inline date-form">
         <%= simple_form_for(@booking) do |f| %>
-          <%= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Until when will you need the furnitures?" %>
+        <div class="form">
+          <%= f.input :starts_at, as: :string, input_html: { id: "start_date" },
+          required: false, placeholder: "From when?", label: false %>
+          <%= f.input :ends_at, as: :string, input_html: { id: "end_date" },
+          required: false, placeholder: "Until when?", label: false %>
+
           <%= f.button :submit, "find furnitures", class: "btn btn-primary"%>
+          </div>
         <% end %>
       </div>
     </div>

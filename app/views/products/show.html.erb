@@ -1,21 +1,31 @@
 <div class="container">
-  <h3><%= @product.name %></h3>
-  <div class="show-container">
-    <div class="show-photo-container" style="background-image: url(<%= @product.photo%> )"></div>
-    <div class="show-desc-container">
-      <div class="product-desc">
-        <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-primary" %>
-        <div class="product-details">
+    <div class="show-product">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+      <div class="product-pic">
+        <img class= "pic" src="<%= @product.photo%> ">
+      </div>
+    </div>
+        <div class="col-xs-12 col-sm-6">
+      <div class="product-description ">
+        <div class="description">
+          <div class="product-title">
+            <h2><%= @product.name %></h3>
+          </div>
           <h3><strong><%= humanized_money_with_symbol(@product.price) %></strong> per day</h3>
-          <h3><strong><%= humanized_money_with_symbol(@product.price *
-            (@booking.ends_at - @booking.starts_at).to_i) %></strong> in total
-          </h3>
-          <p><em>Renting period selected: <%= (@booking.ends_at - @booking.starts_at).to_i %> days</em></p>
+          <h3><strong><%= humanized_money_with_symbol(@product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total</h3>
+          <p>From <%= @booking.starts_at %> to <%= @booking.ends_at %></p>
+          <p>Renting period selected: <em><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</em></p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+          <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-primary show" %>
+          <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost show" %>
         </div>
-        <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost" %>
-        <%= link_to "Back", booking_products_path(@booking), class: "btn btn-ghost" %>
+        <div class="back" src="https://img.icons8.com/material/96/000000/back.png">
+          <%= link_to " < Back", booking_products_path(@booking), class: "back-btn" %>
+          </div>
       </div>
     </div>
   </div>
+    </div>
 </div>
+
