@@ -51,17 +51,18 @@ a {
 
 .landingpage-header {
   position: absolute;
-  top: 128px;
-  left: 88px;
+  top: 228px;
+  left: 190px;
 }
 
 .landingpage-header h1 {
   color: #FFFFFF;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Prata', sans-serif;
   font-size: 80px;
 }
 
 .landingpage-para {
+
   font-size: 23px;
   color: #FFFFFF;
   font-weight: lighter;
@@ -72,4 +73,19 @@ a {
   font-weight: ligther;
   margin-right: 50px;
   font-size: 23px;
+}
+
+.form {
+  padding-top: 10px;
+}
+
+.form-control {
+  height: 49px;
+  margin-right: 12px;
+}
+
+  a.login {
+  color: white;
+  text-decoration: none;
+
 }
