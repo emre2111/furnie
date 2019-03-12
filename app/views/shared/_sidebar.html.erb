@@ -1,9 +1,4 @@
-  <div class="btn-random">
-    <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-primary" %>
-  </div>
-
   <div>
-
     <%= form_tag(booking_products_path(@booking), remote: true, class: "form-sidebar", method: :get) do |f| %>
 
       <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq.sort %>
@@ -19,7 +14,7 @@
       <% material_options << "all" %>
 
       <div class="form-tag room-category">
-        <div class="label_tag">
+        <div class="label_tag search-label">
           <%= label_tag(:product_room, "ROOM") %>
           <%= image_tag "add.svg", height: 16, class: "add-button" %>
         </div>
@@ -30,7 +25,7 @@
       </div>
 
       <div class="form-tag furniture-category">
-        <div class="label_tag">
+        <div class="label_tag search-label">
           <%= label_tag(:category, "FURNITURE") %>
           <%= image_tag "add.svg", height: 16, class: "add-button" %>
         </div>
@@ -41,7 +36,7 @@
       </div>
 
       <div class="form-tag style">
-        <div class="label_tag">
+        <div class="label_tag search-label">
           <%= label_tag(:style, "STYLE") %>
           <%= image_tag "add.svg", height: 16, class: "add-button" %>
         </div>
@@ -52,7 +47,7 @@
       </div>
 
       <div class="form-tag material">
-        <div class="label_tag">
+        <div class="label_tag search-label">
           <%= label_tag(:material, "MATERIAL") %>
           <%= image_tag "add.svg", height: 16, class: "add-button" %>
         </div>
@@ -61,8 +56,12 @@
         </div>
       <hr>
       </div>
-      <%= submit_tag "ajax", class: "btn btn-primary hidden", id: "hdn-submitbtn" %>
+      <%= submit_tag "ajax", class: "btn btn-first hidden", id: "hdn-submitbtn" %>
     <% end %>
+
+    <div class="btn-random">
+      <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-first" %>
+    </div>
   </div>
 
   <%= content_for(:after_js) do  %>
