@@ -4,7 +4,8 @@
 
   <div>
 
-    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %>
+    <%= form_tag(booking_products_path(@booking), remote: true, class: "form-sidebar", method: :get) do |f| %>
+
       <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq.sort %>
       <% product_room_options << "all" %>
 
@@ -16,6 +17,57 @@
 
       <% material_options = @products.pluck(:material).uniq.sort %>
       <% material_options << "all" %>
+
+      <div class="form-tag room-category">
+        <div class="label_tag">
+          <%= label_tag(:product_room, "ROOM") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag" id="product-room">
+          <%= render 'shared/sidebar-product-room', product_room_options: product_room_options %>
+        </div>
+      <hr>
+      </div>
+
+      <div class="form-tag furniture-category">
+        <div class="label_tag">
+          <%= label_tag(:category, "FURNITURE") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag" id="product-category">
+          <%= render 'shared/sidebar-product-category', category_options: category_options %>
+        </div>
+      <hr>
+      </div>
+
+      <div class="form-tag style">
+        <div class="label_tag">
+          <%= label_tag(:style, "STYLE") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag" id="product-style">
+          <%= render 'shared/sidebar-product-style', style_options: style_options %>
+        </div>
+      <hr>
+      </div>
+
+      <div class="form-tag material">
+        <div class="label_tag">
+          <%= label_tag(:material, "MATERIAL") %>
+          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+        </div>
+        <div class="select_tag" id="product-material">
+          <%= render 'shared/sidebar-product-material', material_options: material_options %>
+        </div>
+      <hr>
+      </div>
+      <%= submit_tag "ajax", class: "btn btn-primary hidden", id: "hdn-submitbtn" %>
+    <% end %>
+  </div>
+
+  <%= content_for(:after_js) do  %>
+   <%= javascript_pack_tag "event-sidebar" %>
+  <% end %>
 
     <%#= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
 
@@ -31,69 +83,3 @@
 
       <%# material_options = @products.pluck(:material).uniq.sort %>
       <%# material_options << "all" %>
-
-      <div class="form-tag room-category">
-        <div class="label_tag">
-          <%= label_tag(:product_room, "ROOM") %>
-          <%= image_tag "add.svg", height: 16, class: "add-button" %>
-        </div>
-        <div class="select_tag">
-          <% product_room_options.each do |option| %>
-            <% checked = params[:product_room] == option %>
-            <label for="product_room<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label" ><%= option %></label>
-            <input <%= 'checked' if checked %> type="radio" class="hidden" id="product_room<%= option %>" value="<%= option %>" name="product_room"><br>
-          <% end %>
-        </div>
-      <hr>
-      </div>
-
-      <div class="form-tag furniture-category">
-        <div class="label_tag">
-          <%= label_tag(:category, "FURNITURE") %>
-          <%= image_tag "add.svg", height: 16, class: "add-button" %>
-        </div>
-        <div class="select_tag">
-          <% category_options.each do |option| %>
-            <% checked = params[:category] == option %>
-            <label for="category<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
-            <input <%= 'checked' if checked %> type="radio" class="hidden" id="category<%= option %>" value="<%= option %>" name="category"><br>
-          <% end %>
-        </div>
-      <hr>
-      </div>
-
-      <div class="form-tag style">
-        <div class="label_tag">
-          <%= label_tag(:style, "STYLE") %>
-          <%= image_tag "add.svg", height: 16, class: "add-button" %>
-        </div>
-        <div class="select_tag">
-          <% style_options.each do |option| %>
-            <% checked = params[:style] == option %>
-            <label for="style<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
-            <input <%= 'checked' if checked %> type="radio" class="hidden" id="style<%= option %>" value="<%= option %>" name="style"><br>
-          <% end %>
-        </div>
-      <hr>
-      </div>
-
-      <div class="form-tag material">
-        <div class="label_tag">
-          <%= label_tag(:material, "MATERIAL") %>
-          <%= image_tag "add.svg", height: 16, class: "add-button" %>
-        </div>
-        <div class="select_tag">
-          <% material_options.each do |option| %>
-            <% checked = params[:material] == option %>
-            <label for="material<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
-            <input <%= 'checked' if checked %> type="radio" class="hidden" id="material<%= option %>" value="<%= option %>" name="material"><br>
-          <% end %>
-        </div>
-      <hr>
-      </div>
-    <% end %>
-  </div>
-
-  <%= content_for(:after_js) do  %>
-   <%= javascript_pack_tag "event-sidebar" %>
-  <% end %>
