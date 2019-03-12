@@ -342,11 +342,6 @@ end
 
 
 
-write_doc
-
-
-
-
 
 
 
