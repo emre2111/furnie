@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Furnie
   class Application < Rails::Application
-    #config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.action_view.embed_authenticity_token_in_remote_forms = true
     # add this line later for AJAX
 
     config.generators do |generate|
