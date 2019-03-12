@@ -42,7 +42,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'bed',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -65,7 +66,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'table',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -88,7 +90,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'chair',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -111,7 +114,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'sofa',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -134,7 +138,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'wardrobe',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -157,7 +162,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'shelve',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -180,7 +186,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'desk',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -203,7 +210,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'desk chair',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -226,7 +234,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'lamp',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end
@@ -250,7 +259,8 @@ material.each do |m|
         style:                s,
         material:             m,
         category:             'lamp',
-        price_cents:          product[:price_cents]
+        price_cents:          product[:price_cents],
+        description:          product[:description]
       }
     end
   end

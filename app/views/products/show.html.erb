@@ -16,7 +16,7 @@
           <h3><strong><%= humanized_money_with_symbol(@product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total</h3>
           <p>From <%= @booking.starts_at %> to <%= @booking.ends_at %></p>
           <p>Renting period selected: <em><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</em></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+          <p> <%= @product.description %> </p>
           <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-primary show" %>
           <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost show" %>
         </div>
