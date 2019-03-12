@@ -11,27 +11,17 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "shuffle", randomize_booking_path(@booking), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Find Furniture", booking_products_path(@booking), class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to booking_path(@booking), class: "cart" do %>
-        <%= image_tag "shopping-cart.svg", height: 30 %>
+      <%#= link_to "shuffle", randomize_booking_path(@booking), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%#= link_to "Find Furniture", booking_products_path(@booking), class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "#", class: "cart" do %>
+        <%= image_tag "cart.svg", height: 36 %>
       <% end %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <%= image_tag "profile.svg", height: 30, id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+          <%= image_tag "boy.svg", height: 36, id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
-              <% end %>
-            </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
                 <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
