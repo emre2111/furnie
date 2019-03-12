@@ -94,19 +94,6 @@
     <% end %>
   </div>
 
-  <div class="form form-inline">
-    <%#= simple_form_for(@booking, html: {class: "date-picker-index"}) do |f| %>
-    <%#= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
-    <%# end %>
-    <%= simple_form_for(@booking) do |f| %>
-      <%= f.input :starts_at, as: :string, input_html: { id: "start_date" },
-      required: false, placeholder: "From when?", label: false, class: "form-date" %>
-      <%= f.input :ends_at, as: :string, input_html: { id: "end_date" },
-      required: false, placeholder: "Until when?", label: false, class: "form-date" %>
-      <%= f.button :submit, "Change dates", class: "btn btn-primary"%>
-    <% end %>
-  </div>
-
   <%= content_for(:after_js) do  %>
    <%= javascript_pack_tag "event-sidebar" %>
   <% end %>
