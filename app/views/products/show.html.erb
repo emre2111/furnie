@@ -22,7 +22,7 @@
             <%= @booking.starts_at.year %>
             for <strong><%= humanized_money_with_symbol(@product.price) %> per day</strong></p>
           <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong></p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+          <p><%= @product.description %> </p>
           <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-primary show" %>
           <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost show" %>
         </div>
