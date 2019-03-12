@@ -39,3 +39,31 @@
 .banner-random-text h3 {
   margin-bottom: 10px;
 }
+
+
+.conf_modal{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: lighter;
+  font-size: 20px;
+  height:50px;
+  width:20vw;
+  background-color: #1BBB99;
+  position: absolute;
+  z-index: 1000000;
+  pointer-events: none;
+  margin-left: 40vw;
+  opacity: 0;
+  transition: all ease 1s;
+  border-radius: 10px;
+}
+
+.conf_modal p {
+  margin: 0px;
+}
+
+.shown_modal{
+  opacity:1;
+}
