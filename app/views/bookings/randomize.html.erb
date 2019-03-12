@@ -1,6 +1,7 @@
 <div class="container-random">
-  <h1>Your random furnitures</h1>
-
+  <div class="center-text">
+    <h1>Hit »Enter« to shuffle</h1>
+  </div>
   <div class="row">
     <div class="nav" role="tablist">
       <% @random.each_with_index do |product, index| %>
@@ -20,19 +21,21 @@
       <% end %>
     </div>
   </div>
-
   <div class="row">
     <div class="tab-content">
       <% @random.each_with_index do |product, index| %>
         <div role="tabpanel" class="tab-pane <%= "active" if index.zero? %>" id="product-<%= product.id %>" >
-          <div class="product-desc appear-hover">
-            <h3><strong><%= humanized_money_with_symbol(product.price *
-              (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total
-            </h3>
-            <p><em>Renting period selected: <%= (@booking.ends_at - @booking.starts_at + 1 ).to_i %> days</em></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
-            <div>
-              <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, product), class: "btn btn-primary" %>
+          <div class="product-desc appear-hover product-desc-random">
+            <div class="card-category banner-random banner-random-img" style="background-image: url('<%=  product.photo %>')"></div>
+            <div class="banner-random banner-random-text">
+              <h3><strong><%= humanized_money_with_symbol(product.price *
+                (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total
+              </h3>
+              <p><em>Renting period selected: <%= (@booking.ends_at - @booking.starts_at + 1 ).to_i %> days</em></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+              <div>
+                <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, product), class: "btn btn-primary" %>
+              </div>
             </div>
           </div>
         </div>
