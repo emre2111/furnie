@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     resources :products, only: [:index, :show, :new, :create] do
       resources :booking_items, only: [:create]
+      resources :random_booking_items, only: [:create]
     end
     resources :payments, only: [:new, :create]
     # resources :randomizer do
