@@ -1,5 +1,6 @@
 .sidebar {
   position: fixed;
+  // flex: 0 0 20%;
   display: inline;
   width: 17%;
   left: 40px;
@@ -15,8 +16,8 @@
 .order_form {
   margin: 30px 0px;
 }
-h1.index {
-  font-size: 30px;
+h2.index {
+  text-align: left;
 }
 
 .sidebar .submit-tag {
@@ -65,3 +66,38 @@ h1.index {
   background-color: #292D33;
   border-color: #292D33;
 }
+
+.product-desc h3 {
+  margin: 0px;
+}
+
+.product-desc p {
+  margin: 0px;
+}
+
+.product-desc {
+  margin: 15px;
+  margin-bottom: 5px;
+}
+
+.description p {
+  margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

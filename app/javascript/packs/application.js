@@ -6,5 +6,7 @@ import  { sidebarFormdate }  from "./event-date";
 import  { searchButton }  from "./event-search";
 
 import {eventActive} from "../plugins/event_active";
+import {eventReload} from "./event_reload";
+eventReload();
 eventActive();
 

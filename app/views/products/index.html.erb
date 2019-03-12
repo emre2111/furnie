@@ -5,9 +5,20 @@
 
  <div class="products-container">
 
-  <h1 class = "index">Furniture available for rent</h1>
+  <h2 class="index">FURNITURE AVAILABLE FOR RENT</h2>
 
-  <div class="product-cards">
+  <div class="form form-inline">
+    <%#= simple_form_for(@booking, html: {class: "date-picker-index"}) do |f| %>
+    <%#= f.input :ends_at, as: :string, input_html: { id: "datepicker" }, label: "Change your dates" %>
+    <%# end %>
+    <%= simple_form_for(@booking, wrapper_html: {id: "form-change-date"})  do |f| %>
+      <%= f.input :starts_at, as: :string, input_html: { id: "start_date", class: "change_date" }, required: false, placeholder: "From when?", label: false %>
+      <%= f.input :ends_at, as: :string, input_html: { id: "end_date", class: "change_date" }, required: false, placeholder: "Until when?", label: false %>
+      <%= f.button :submit, "Change dates", class: "btn btn-primary"%>
+    <% end %>
+  </div>
+
+  <div class="product-cards" id="products-all">
     <% @products.each do |product| %>
       <%= render 'shared/card', product: product, booking: @booking %>
     <% end %>
