@@ -3,16 +3,20 @@ class ProductsController < ApplicationController
 
   def index
     @booking = Booking.find(params[:booking_id])
-    @products = Product.order(:name).page(params[:page]) #for gem kaminari
-    @products = @products.joins(rooms: :product_rooms).distinct.where(rooms: { name: params[:product_room] }) if params[:product_room].present? unless params[:product_room] == "all"
+    @products = Product.all #for gem kaminari
+    @products = @products.includes(rooms: :product_rooms).where(rooms: { name: params[:product_room] }) if params[:product_room].present? unless params[:product_room] == "all"
     @products = @products.where(category: params[:category]) if params[:category].present? unless params[:category] == "all"
     @products = @products.where(style: params[:style]) if params[:style].present? unless params[:style] == "all"
     @products = @products.where(material: params[:material]) if params[:material].present? unless params[:material] == "all"
-
-    #pagination
-    order_by_price(params[:order_by_price])
-    order_by_name(params[:order_by_name])
-    order_by_category(params[:order_by_category])
+    @products = @products.order("products.name").page(params[:page])
+    # #pagination
+    # order_by_price(params[:order_by_price])
+    # order_by_name(params[:order_by_name])
+    # order_by_category(params[:order_by_category])
+    respond_to do |format|
+      format.html { render 'products/index' }
+      format.js  # <-- will render `app/views/products/index.js.erb`
+    end
   end
 
   def show

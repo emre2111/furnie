@@ -1,0 +1,5 @@
+<div class="product-cards" id="products-all">
+  <% @products.each do |product| %>
+    <%= render 'shared/card', product: product, booking: @booking %>
+  <% end %>
+</div>

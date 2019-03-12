@@ -21,12 +21,14 @@
 .select_tag{
   opacity: 0;
   height: 0;
+  display: none;
   // transition: all ease 1s;
 }
 
 .select_show{
   opacity: 1;
   height: auto;
+  display: block;
 }
 .btn_rotated{
   transform: rotate(-45deg)
