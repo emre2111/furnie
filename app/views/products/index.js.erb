@@ -1,17 +1,37 @@
-// alert("hey");
+<% category_options = @products.pluck(:category).uniq.sort %>
+<% category_options << "all" %>
+
+<% category_options = @products.pluck(:category).uniq.sort %>
+<% category_options << "all" %>
+
+<% style_options = @products.pluck(:style).uniq.sort %>
+<% style_options << "all" %>
+
+<% material_options = @products.pluck(:material).uniq.sort %>
+<% material_options << "all" %>
 
 function refreshProducts(innerHTML) {
   const refreshed = document.getElementById('products-all');
   refreshed.innerHTML = innerHTML;
 }
 
-'<% @category_options = @products.pluck(:category).uniq.sort %>'
-'<% @category_options << "all" %>'
-
 function refreshProductCategory(innerHTML) {
   const refreshedCategory = document.getElementById('product-category');
   refreshedCategory.innerHTML = innerHTML;
 }
 
+function refreshProductStyle(innerHTML) {
+  const refreshedStyle = document.getElementById('product-style');
+  refreshedStyle.innerHTML = innerHTML;
+}
+
+function refreshProductMaterial(innerHTML) {
+  const refreshedMaterial = document.getElementById('product-material');
+  refreshedMaterial.innerHTML = innerHTML;
+}
+
+
 refreshProducts('<%= j render "products/refresh", products: @products %>');
-refreshProductCategory('<%= j render "shared/sidebar-product-category", category_options: @category_options %>');
+refreshProductCategory('<%= j render "shared/sidebar-product-category", category_options: category_options %>');
+refreshProductStyle('<%= j render "shared/sidebar-product-style", style_options: style_options %>');
+refreshProductMaterial('<%= j render "shared/sidebar-product-material", material_options: material_options %>');
