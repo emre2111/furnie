@@ -1,14 +1,12 @@
-  <div>
-
+  <div class="btn-random">
     <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-primary" %>
   </div>
 
   <div>
-    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
 
-    <% product_room_options = Room.pluck(:name).uniq.sort %>
-    <% product_room_options << "all" %>
-
+    <%= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %>
+      <% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq.sort %>
+      <% product_room_options << "all" %>
 
       <% category_options = @products.pluck(:category).uniq.sort %>
       <% category_options << "all" %>
@@ -18,6 +16,21 @@
 
       <% material_options = @products.pluck(:material).uniq.sort %>
       <% material_options << "all" %>
+
+    <%#= form_tag booking_products_path(@booking), class: "form-sidebar", method: :get do |f| %> <%#= add remote = true for AJAX %>
+
+    <%# product_room_options = Room.pluck(:name).uniq.sort %>
+    <%# product_room_options << "all" %>
+
+
+      <%# category_options = @products.pluck(:category).uniq.sort %>
+      <%# category_options << "all" %>
+
+      <%# style_options = @products.pluck(:style).uniq.sort %>
+      <%# style_options << "all" %>
+
+      <%# material_options = @products.pluck(:material).uniq.sort %>
+      <%# material_options << "all" %>
 
       <div class="form-tag room-category">
         <div class="label_tag">
@@ -87,9 +100,9 @@
     <%# end %>
     <%= simple_form_for(@booking) do |f| %>
       <%= f.input :starts_at, as: :string, input_html: { id: "start_date" },
-      required: false, placeholder: "From when?", label: false %>
+      required: false, placeholder: "From when?", label: false, class: "form-date" %>
       <%= f.input :ends_at, as: :string, input_html: { id: "end_date" },
-      required: false, placeholder: "Until when?", label: false %>
+      required: false, placeholder: "Until when?", label: false, class: "form-date" %>
       <%= f.button :submit, "Change dates", class: "btn btn-primary"%>
     <% end %>
   </div>
