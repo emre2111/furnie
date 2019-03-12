@@ -32,16 +32,83 @@
   justify-content: space-between;
   margin: 20px;
 }
-.btn-primary {
-  border-radius: 5px;
+
+// .btn-primary {
+//   // border-radius: 5px;
+//   background-color: #1BBB99;
+//   border: none;
+//   padding: 10px;
+//   margin-bottom: 10px;
+//   margin-top: 10px;
+//   &:hover {
+//     background-color: #218A78;
+//     opacity: 0.9;
+//     transform: scale(1.02);
+//   }
+// }
+
+// .btn-primary:active {
+//   background-color: #1BBB99;
+//   border-color: transparent;
+// }
+
+// .btn-primary:focus {
+//   background-color: #1BBB99;
+//   border-color: transparent;
+//   outline: none;
+// }
+
+.btn-first {
   background-color: #1BBB99;
+  color: #FFFFFF;
   border: none;
-  padding: 12px;
+  padding: 10px;
   margin-bottom: 10px;
   margin-top: 10px;
-  &:hover {
-    background-color: #218A78;
-  }
+}
+
+.btn-first:hover {
+  color: #FFFFFF;
+  opacity: 0.9;
+  transform: scale(1.01);
+}
+
+.btn-first:active:focus {
+  color: #FFFFFF;
+  transform: scale(1.0);
+  border-color: transparent;
+  outline: none;
+}
+
+.btn-first:active {
+  color: #FFFFFF;
+  transform: scale(1.0);
+  border-color: transparent;
+  outline: none;
+}
+
+.btn-first:focus {
+  color: #FFFFFF;
+  transform: scale(1.0);
+  outline: none;
+}
+
+.btn:active:focus {
+  background-color: #1BBB99;
+  border-color: transparent;
+  outline: none;
+}
+
+.btn:active {
+  background-color: #1BBB99;
+  border-color: transparent;
+  outline: none;
+}
+
+.btn:focus {
+  background-color: #1BBB99;
+  border-color: transparent;
+  outline: none;
 }
 
 .btn-random .btn-primary {
@@ -52,14 +119,34 @@
   margin: 10px;
   margin-bottom: 5px;
   color: #292D33;
+  &:hover {
+    text-decoration: none;
+    color: #292D33;
+  }
 }
 
 .btn-ghost {
-  border-radius: 5px;
-  color: #1BBB99;
+  // border-radius: 5px;
+  color: #292D33;
+  opacity: 0.8;
+  font-weight: lighter;
   background-color: #FFFFFF;
-  border: 1px solid #1BBB99;
+  border: 1px solid #292D33;
   &:hover {
+    opacity: 1px;
     color: #218A78;
+    border: 1px solid #218A78;
+    background-color: #FFFFFF;
   }
+}
+
+.btn-ghost:active:focus {
+  background-color: #FFFFFF;
+}
+.btn-ghost:active {
+  background-color: #FFFFFF;
+}
+
+.btn-ghost:focus {
+  background-color: #FFFFFF;
 }

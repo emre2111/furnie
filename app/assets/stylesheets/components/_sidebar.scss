@@ -11,10 +11,13 @@
   }
 }
 
+.search-label {
+  position: relative;
+}
+
 .add-button {
   position: absolute;
   right: 17px;
-  // top: 4px;
   transition: all ease 0.5s;
 }
 
@@ -34,6 +37,3 @@
   transform: rotate(-45deg)
 }
 
-.change_date{
-  border: 1px solid lightgrey;
-}

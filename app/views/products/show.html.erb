@@ -15,15 +15,18 @@
           <h3><strong><%= humanized_money_with_symbol(@product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %> in total</strong></h3>
           <p>From
             <%= @booking.starts_at.strftime("%B") %>
-            <%= @booking.starts_at.day %>
-            until
-            <%= @booking.starts_at.strftime("%B") %>
             <%= @booking.starts_at.day %>,
             <%= @booking.starts_at.year %>
-            for <strong><%= humanized_money_with_symbol(@product.price) %> per day</strong></p>
-          <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong></p>
-          <p><%= @product.description %> </p>
-          <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-primary show" %>
+
+            until
+            <%= @booking.ends_at.strftime("%B") %>
+            <%= @booking.ends_at.day %>,
+            <%= @booking.ends_at.year %></p>
+
+          <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> ( <%= humanized_money_with_symbol(@product.price) %> per day )</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
+          <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-first show" %>
+
           <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost show" %>
         </div>
         <div class="back" src="https://img.icons8.com/material/96/000000/back.png">

@@ -1,5 +1,13 @@
 <div class="container">
   <h4 id="cart-header">Your shopping cart</h4>
+  <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> |
+  From <%= @booking.starts_at.strftime("%B") %>
+        <%= @booking.starts_at.day %>,
+        <%= @booking.starts_at.year %>
+        until
+        <%= @booking.ends_at.strftime("%B") %>
+        <%= @booking.ends_at.day %>,
+        <%= @booking.ends_at.year %></p>
   <hr>
   <div class="booking-flex">
     <div class="booking-flex-item">
@@ -10,7 +18,7 @@
             <div class="item-desc">
               <strong><%= item.product.name %></strong><br>
               <p>some description here</p><br>
-              <%= humanized_money_with_symbol(item.product.price) %>
+              <p><%= humanized_money_with_symbol(item.product.price) %> per day</p>
             </div>
           </div>
         </div>
@@ -26,7 +34,7 @@
         <p>Delivery, setup and pickup €50.00</p>
         <hr>
         <strong><p>Total <%= humanized_money_with_symbol(@booking.total_amount) %></p></strong>
-        <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-primary" %>
+        <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-first" %>
       </div>
     </div>
   </div>
