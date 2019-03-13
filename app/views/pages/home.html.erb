@@ -2,8 +2,9 @@
   <div class="homepage-image-container" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.10stunninghomes.com/wp-content/uploads/minimalist-apartment-ukraine.jpg')" class="homepage-image">
     <a class= "login" href="/users/sign_in">Login</a>
     <div class="landingpage-header">
-      <h1>Welcome to Furnie</h1>
-      <p class="landingpage-para">Furnie offers a furniture renting service in Berlin.</p>
+      <p class="landingpage-para">Welcome to furnie</p>
+      <h1>Rent Fast & Simple Furniture </h1>
+      <p class="landingpage-para">We are offers a furniture renting service in Berlin.</p>
       <div class="form form-inline date-form">
         <%= simple_form_for(@booking) do |f| %>
         <div class="form">
@@ -11,7 +12,6 @@
           required: false, placeholder: "From when?", label: false %>
           <%= f.input :ends_at, as: :string, input_html: { id: "end_date" },
           required: false, placeholder: "Until when?", label: false %>
-
           <%= f.button :submit, "find furnitures", class: "btn-first"%>
           </div>
         <% end %>
