@@ -36,12 +36,9 @@ products = []
   style = ["nature", "industrial", "scandinavian", "modern"]
   beds = []
   material.each do |m|
-    p m
     style.each do |s|
-      p s
       url = "https://www.home24.de/kategorie/schlafzimmermoebel/betten-shop/?material=#{m}&styleFilter=#{s}Style"
       scraper(url).each  do |product|
-        p product[:name]
         beds <<  {
           name:                 product[:name],
           sku:                  rand(10 ** 10).to_s,
