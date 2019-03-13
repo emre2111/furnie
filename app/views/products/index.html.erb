@@ -1,25 +1,28 @@
+<div class="index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.10stunninghomes.com/wp-content/uploads/minimalist-apartment-ukraine.jpg')">
+  <div>
+    <h2 class="index">Dont Want To Browse?</h2>
+    <p>Try our randomizer tool to get amazing and beautiful furniture tailored picked by designers.</p>
+    <div class="btn-random" style="text-align: center;">
+      <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-first" %>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="product-container">
     <div class="sidebar">
       <%= render 'shared/sidebar' %>
     </div>
-
     <div class="products-container">
-     <div class="form form-inline form-change-date">
-       <%= simple_form_for(@booking)  do |f| %>
-         <%= f.input :starts_at, as: :string, input_html: { id: "start_date", class: "change_date" }, required: false, placeholder: "From when?", label: false %>
-         <%= f.input :ends_at, as: :string, input_html: { id: "end_date", class: "change_date" }, required: false, placeholder: "Until when?", label: false %>
-         <%= f.button :submit, "Change dates", class: "btn-ghost btn-change-date"%>
-       <% end %>
-     </div>
-     <h2 class="index">FURNITURE AVAILABLE FOR RENT</h2>
-
-     <div class="product-cards" id="products-all">
-       <% @products.each do |product| %>
-         <%= render 'shared/card', product: product, booking: @booking %>
-       <% end %>
-     </div>
-     <div class="page-container"><%= paginate @products %></div>
+    <h2 class="title">YOU HAVE 200 RESULTS MATCHING YOUR SEARCH</h2>
+      <div class="form-index">
+        <%= render "./shared/date_form" %>
+      </div>
+       <div class="product-cards" id="products-all">
+         <% @products.each do |product| %>
+           <%= render 'shared/card', product: product, booking: @booking %>
+         <% end %>
+       </div>
+      <div class="page-container"><%= paginate @products %></div>
     </div>
   </div>
 </div>

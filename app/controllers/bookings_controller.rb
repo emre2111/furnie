@@ -21,6 +21,15 @@
     end
   end
 
+  def destroy
+    @booking = Booking.find(params[:id])
+    @items = @booking.items
+    @items.destroy
+
+    redirect_to booking_path(@booking)
+
+  end
+
   def total_price
     duration = ends_at - starts_at + 1
     duration.to_i * @product.price_in_cents

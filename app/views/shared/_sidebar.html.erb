@@ -58,10 +58,6 @@
       </div>
       <%= submit_tag "ajax", class: "btn btn-first hidden", id: "hdn-submitbtn" %>
     <% end %>
-
-    <div class="btn-random">
-      <%= link_to "Go full random", randomize_booking_path(@booking), class: "btn btn-first" %>
-    </div>
   </div>
 
   <%= content_for(:after_js) do  %>
