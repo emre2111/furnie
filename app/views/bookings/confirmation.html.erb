@@ -1,7 +1,15 @@
 <div class="container">
   <h3>Thank you very much for your order!</h3>
-  <h5>A confirmation has been sent to <%= current_user.email %>.</h5>
-  <h5>Your furniture will de delivered to your address .... </h5>
+  <h5>A confirmation has been sent to <%= current_user.email %></h5>
+  <h5>Your furniture will de delivered to your address on /DATE/ </h5>
+  <h5>You are renting furniture from
+        <%= @booking.starts_at.strftime("%B") %>
+        <%= @booking.starts_at.day %>,
+        <%= @booking.starts_at.year %>
+        until
+        <%= @booking.ends_at.strftime("%B") %>
+        <%= @booking.ends_at.day %>,
+        <%= @booking.ends_at.year %> </h5>
 
   <div class="confirm-details">
     <div class="order-confirmation">
@@ -19,6 +27,10 @@
         <div class="order-date">
           <strong><p>Order date</p></strong>
           <%= Date.today %>
+        </div>
+        <div class="order-payment">
+          <strong><p>Total payment</p></strong>
+          <p><%= humanized_money_with_symbol(@booking.total_amount) %></p>
         </div>
       </div>
     </div>
