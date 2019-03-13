@@ -1,3 +1,4 @@
+
 <div class="navbar-wagon">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
@@ -14,10 +15,12 @@
 
       <%= link_to "Find Furniture", booking_products_path(@booking), class: "navbar-wagon-item navbar-wagon-link" %>
       <%= link_to "shuffle", randomize_booking_path(@booking), class: "navbar-wagon-item navbar-wagon-link" %>
-    <div id="cart-container">  
+    <div id="cart-container">
     <%= link_to booking_path(@booking), class: "cart" do %>
       <%= image_tag "cart.svg", height: 36 %>
-      <span id="itemCount"></span>
+      <span id="itemCount">
+            <%=  current_user.bookings.last.booking_items.count %>
+      </span>
 
       <% end %>
      </div>
@@ -52,4 +55,9 @@
     </div>
   </div>
 </div>
+<script>
+
+
+
+</script>
 

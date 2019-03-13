@@ -21,14 +21,20 @@ bookRandom();
 document.getElementById("itemCount").innerText = document.getElementById("itemCount").innerText;
 let itemCount = document.getElementById("itemCount").textContent + 1;
 const addCartButton = document.querySelector(".btn-to-cart");
-addCartButton.addEventListener("click", addCount);
+if(addCartButton){
+  addCartButton.addEventListener("click", addCount);
+}
+
+const numItem = document.getElementById("itemCount");
+  if(numItem.innerText === "0"){
+    numItem.style.display = 'none';
+}
 
 function addCount(e) {
-  e.preventDefault();
+  // e.preventDefault();
 
   // increment badge number
   function incrementValue() {
-  console.log("hello");
     const numItem = document.getElementById("itemCount");
     numItem.style.display = 'block';
     numItem.innerText = itemCount++;
