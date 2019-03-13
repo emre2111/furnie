@@ -125,3 +125,23 @@
   color: #FFFFFF;
 }
 
+#cart-container {
+  float: right;
+  width: 20px;
+  position: relative;
+}
+
+#itemCount {
+  position: absolute;
+  display: none;
+  top: -10px;
+  left: 27px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff0732;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+}
+
