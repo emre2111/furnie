@@ -32,6 +32,15 @@
   opacity: 1;
   height: auto;
   display: block;
+  text-transform: uppercase;
+  line-height: 22px;
+  font-size: 14px;
+}
+
+.select_show {
+  :first-child {
+    margin-top: 16px;
+  }
 }
 .btn_rotated{
   transform: rotate(-45deg)
