@@ -25,7 +25,7 @@
 
           <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> ( <%= humanized_money_with_symbol(@product.price) %> per day )</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
-          <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), id:"btn-to-cart", class: "btn btn-first show" %>
+          <%= button_to "Add to your cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-first show btn-to-cart" %>
 
           <%= link_to "Go to your cart", booking_path(@booking), class: "btn btn-ghost show" %>
         </div>

@@ -20,7 +20,7 @@ bookRandom();
 // To add badge
 document.getElementById("itemCount").innerText = document.getElementById("itemCount").innerText;
 let itemCount = document.getElementById("itemCount").textContent + 1;
-const addCartButton = document.getElementById("btn-to-cart");
+const addCartButton = document.querySelector(".btn-to-cart");
 addCartButton.addEventListener("click", addCount);
 
 function addCount(e) {
