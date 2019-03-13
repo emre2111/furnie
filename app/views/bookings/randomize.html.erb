@@ -2,20 +2,11 @@
   <p>Your Item has been added</p>
 </div>
 
-<div class="index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.10stunninghomes.com/wp-content/uploads/minimalist-apartment-ukraine.jpg')">
-  <div>
-    <h2 class="index">Hit » Enter « or click shuffle</h2>
-    <p>Try our randomizer.</p>
-    <div class="btn-random" style="text-align: center;">
-      <%= link_to "Shuffle", randomize_booking_path(@booking), class: "btn btn-first" %>
-    </div>
-  </div>
-</div>
+<h2 class="index">Hit » <i class="highlighted highlighted-green">Enter</i> « to shuffle</h2>
+
 <div class="container-random">
  <div class="col-xs-6">
   <div class="row">
-    <br>
-    <br>
     <br>
     <div class="nav" role="tablist">
       <% @random.each_with_index do |product, index| %>

@@ -38,6 +38,16 @@
   margin-bottom: 10px;
 }
 
+.highlighted-green {
+       color: #00bf97;
+    background: rgba(0, 191, 151, 0.17);
+}
+
+.highlighted {
+    padding: 0 15px 3px;
+    font-style: normal;
+    border-radius: 3px;
+}
 
 .conf_modal{
   display: flex;
@@ -95,4 +105,13 @@
 .green-bold {
    color: black;
 }
+
+h2.index {
+    font-size: 30px;
+    padding: 5px;
+    text-align: center;
+    font-weight: 400;
+    color: #8a8a8a;
+}
+
 
