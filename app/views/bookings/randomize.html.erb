@@ -2,7 +2,7 @@
   <p>Your Item has been added</p>
 </div>
 
-  <div class="index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.10stunninghomes.com/wp-content/uploads/minimalist-apartment-ukraine.jpg')">
+<div class="index-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('http://www.10stunninghomes.com/wp-content/uploads/minimalist-apartment-ukraine.jpg')">
   <div>
     <h2 class="index">Hit » Enter « or click shuffle</h2>
     <p>Try our randomizer.</p>
@@ -13,62 +13,74 @@
 </div>
 <div class="container-random">
  <div class="col-xs-6">
-    <div class="row">
-      <br>
-      <br>
-      <br>
-      <div class="nav" role="tablist">
-        <% @random.each_with_index do |product, index| %>
-          <div role="presentation" class="<%= "active" if index.zero? %>">
-            <div class="random-card col-xs-4" href="#product-<%= product.id %>" aria-controls="product-<%= product.id %>" role="tab" data-toggle="tab">
-              <div class="card-container card-container-random">
-                <div class="card-category" style="background-image: url('<%=  product.photo %>')">
-                  <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
-                </div>
-                <div class="product-desc">
-                  <h3><%= product.name %></h3>
-                  <p><strong><%= humanized_money_with_symbol(product.price) %></strong> per day</p>
-                </div>
-              </div>
+  <div class="row">
+    <br>
+    <br>
+    <br>
+    <div class="nav" role="tablist">
+      <% @random.each_with_index do |product, index| %>
+      <div role="presentation" class="<%= "active" if index.zero? %>">
+        <div class="random-card col-xs-4" href="#product-<%= product.id %>" aria-controls="product-<%= product.id %>" role="tab" data-toggle="tab">
+          <div class="card-container card-container-random">
+            <div class="card-category" style="background-image: url('<%=  product.photo %>')">
+              <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
+            </div>
+            <div class="product-desc">
+              <h3><%= product.name %></h3>
+              <p><strong><%= humanized_money_with_symbol(product.price) %></strong> per day</p>
             </div>
           </div>
-        <% end %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-6">
+  <div class="row">
+    <div class="tab-content">
+      <% @random.each_with_index do |product, index| %>
+      <div role="tabpanel" class="tab-pane <%= "active" if index.zero? %>" id="product-<%= product.id %>" >
+        <div class="left-card product-desc appear-hover product-desc-random">
+          <div class="card-category banner-random banner-random-img" style="background-image: url('<%=  product.photo %>')"></div>
+          <div class="banner-random banner-random-text">
+            <h3><strong><%= humanized_money_with_symbol(product.price *
+            (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total
+          </h3>
+          <p>From
+            <%= @booking.starts_at.strftime("%B") %>
+            <%= @booking.starts_at.day %>,
+            <%= @booking.starts_at.year %>
+            until
+            <%= @booking.ends_at.strftime("%B") %>
+            <%= @booking.ends_at.day %>,
+            <%= @booking.ends_at.year %>
+          </p>
+          <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong></p>
+          <div>
+
+            <%= button_to "Add to your cart", booking_product_random_booking_items_path(@booking, product), class: "btn btn-first btn-random btn-to-cart", remote: true %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <div class="banner-business-model">
+      <div class="banner-business-model-item">
+        <i class="material-icons">mood</i>
+        <p><strong class="green-bold">Flexible</strong> renting<br>period</p>
+      </div>
+      <div class="banner-business-model-item">
+        <i class="material-icons">local_shipping</i>
+        <p><strong class="green-bold">Easy</strong> delivery and<br>pickup</p>
+      </div>
+      <div class="banner-business-model-item">
+        <i class="material-icons">filter_vintage</i>
+        <p><strong class="green-bold">Eco</strong> sharing<br>community</p>
       </div>
     </div>
   </div>
-
-  <div class="col-xs-6">
-    <div class="row">
-      <div class="tab-content">
-        <% @random.each_with_index do |product, index| %>
-          <div role="tabpanel" class="tab-pane <%= "active" if index.zero? %>" id="product-<%= product.id %>" >
-            <div class="left-card product-desc appear-hover product-desc-random">
-              <div class="card-category banner-random banner-random-img" style="background-image: url('<%=  product.photo %>')"></div>
-              <div class="banner-random banner-random-text">
-                <h3><strong><%= humanized_money_with_symbol(product.price *
-                  (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total
-                </h3>
-                <p>From
-                <%= @booking.starts_at.strftime("%B") %>
-                <%= @booking.starts_at.day %>,
-                <%= @booking.starts_at.year %>
-                until
-                <%= @booking.ends_at.strftime("%B") %>
-                <%= @booking.ends_at.day %>,
-                <%= @booking.ends_at.year %>
-                </p>
-                <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong></p>
-                <div>
-
-                  <%= button_to "Add to your cart", booking_product_random_booking_items_path(@booking, product), class: "btn btn-first btn-random btn-to-cart", remote: true %>
-
-
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+</div>
+</div>
 </div>
