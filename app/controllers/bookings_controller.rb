@@ -10,11 +10,14 @@
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     # @booking.starts_at = Date.today
+    if params[:booking][:ends_at].empty? || params[:booking][:starts_at].empty?
+      redirect_to root_path, alert: "Please try again" and return
+    end
+
     if @booking.save
       redirect_to booking_products_path(@booking)
     else
-      flash[:alert] = "Please try again"
-      redirect_to root_path
+      redirect_to root_path, alert: "Please try again"
     end
   end
 
