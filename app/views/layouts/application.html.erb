@@ -18,7 +18,7 @@
     <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' if request.original_url.include?("bookings")%>
     <%= render 'shared/flashes' %>
     <div class="page-height">
     <%= yield %>

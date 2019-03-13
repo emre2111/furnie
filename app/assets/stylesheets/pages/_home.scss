@@ -68,6 +68,7 @@ label {
 }
 
 .landingpage-header {
+  text-align: center;
   position: absolute;
   top: 228px;
   left: 190px;
@@ -95,10 +96,11 @@ label {
 
 .form {
   padding-top: 10px;
+
 }
 
 .form-control {
-  height: 49px;
+  height: 45px;
   margin-right: 12px;
 }
 
@@ -110,3 +112,17 @@ a.login {
   top: 28px;
   right: 48px;
 }
+
+.flatpickr-day.endRange {
+  background: #1BBB99 !important;
+  border-color: #1BBB99 !important;
+}
+
+.flatpickr-day.selected {
+  background: #1BBB99 !important;
+  border-color: #1BBB99 !important;
+}
+
+
+
+
