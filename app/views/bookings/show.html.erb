@@ -12,8 +12,7 @@
   <div class="booking-flex">
     <div class="booking-flex-item">
       <% @items.each do |item| %>
-      <%= link_to 'Delete', @booking, method: :delete %>
-
+      <%=link_to 'Delete', booking_product_booking_item_path(@booking, item.product, item), method: :delete %>
         <div class="booking-item-container">
           <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
           <div class="show-desc">

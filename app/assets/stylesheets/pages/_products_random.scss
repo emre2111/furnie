@@ -67,3 +67,32 @@
 .shown_modal{
   opacity:1;
 }
+
+.banner-business-model {
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 33px;
+}
+
+.banner-business-model-item {
+  width: 200px;
+  text-align: center;
+}
+
+.banner-business-model-item h1 {
+  color: #1BBB99;
+  font-weight: bold;
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.material-icons {
+  font-size: 45px;
+  color: #e8e8e8;
+}
+
+.green-bold {
+   color: black;
+}
+
