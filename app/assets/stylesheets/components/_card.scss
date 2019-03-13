@@ -18,13 +18,17 @@
   opacity: 1;
 }
 
+.random-card {
+    padding-bottom: 25px;
+}
+
 .container-random {
   margin-left: 50px;
   margin-right: 50px;
 }
 
 .active-border .card-container-random {
-  border-bottom: #1BBB99 solid 10px;
+  border-bottom: #1BBB99 solid 8px;
 }
 .card-category {
   background-size: contain;
@@ -60,6 +64,11 @@
   font-weight: lighter;
   color: white;
   justify-content: center;
+}
+
+.left-card {
+  border-bottom: solid 2px #e8e8e8;
+  padding-bottom: 33px;
 }
 
 .product-desc {

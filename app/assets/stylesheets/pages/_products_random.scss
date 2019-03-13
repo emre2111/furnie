@@ -12,9 +12,7 @@
 }
 
 .product-desc-random {
-  display: flex;
-  align-items: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
 }
 
 .banner-random {
@@ -22,7 +20,7 @@
 }
 
 .banner-random-img {
-  width: 30%;
+  width: 100%;
   height: 300px;
 }
 
@@ -43,6 +41,8 @@
 
 .conf_modal{
   display: flex;
+  top: 283px;
+  border: solid 2px white;
   align-items: center;
   justify-content: center;
   color: white;
@@ -57,7 +57,7 @@
   margin-left: 40vw;
   opacity: 0;
   transition: all ease 1s;
-  border-radius: 10px;
+  border-radius: 4px;
 }
 
 .conf_modal p {
