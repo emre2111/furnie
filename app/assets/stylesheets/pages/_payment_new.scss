@@ -1,0 +1,27 @@
+#payment-container {
+  text-align: center;
+  width: 335px;
+  height: 300px;
+  background-color: rgba(84, 82, 82, 0.32);
+  position: absolute;
+  top: 100px;
+  left: 600px;
+  box-shadow: 4px 4px 1px rgba(65, 64, 64, 0.45);
+  border-radius: 5px;
+}
+
+.payment-detail {
+  font: #FFFFFF;
+  position: absolute;
+  left: 60px;
+  top: 90px;
+}
+
+.payment-detail h4 {
+  color: #FFFFFF;
+}
+
+.amount span {
+  color: #FFFFFF;
+  font-size: 20px;
+}
