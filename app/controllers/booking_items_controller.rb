@@ -16,6 +16,18 @@ class BookingItemsController < ApplicationController
     end
   end
 
+   def destroy
+    @booking = Booking.find(params[:booking_id])
+    @product = Product.find(params[:product_id])
+
+    # @item = @product.items
+    @item = Item.find(params[:id])
+    @item.destroy
+    # redirect_to booking_product_booking_item_path(@booking, @product, @item)
+    redirect_to booking_path(@booking)
+    # /bookings/:booking_id/products/:product_id/booking_items/:id(.:format)
+  end
+
   private
 
   def booking_item_params
