@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     end
 
     resources :products, only: [:index, :show, :new, :create] do
-      resources :booking_items, only: [:create]
+      resources :booking_items, only: [:create, :destroy]
       resources :random_booking_items, only: [:create]
     end
     resources :payments, only: [:new, :create]
