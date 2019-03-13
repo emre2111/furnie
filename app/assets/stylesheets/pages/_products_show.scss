@@ -7,6 +7,7 @@
 .product-pic{
  flex: 0 0 60%;
 }
+
 .pic {
   height: 80%;
   width: 80%;
@@ -16,14 +17,12 @@
   background-color: #F2F2F2
 }
 
-.show {
-  margin: 20px;
-  width: 90%;
-  height: 49px;
-}
-
 .description {
   margin: 0 40px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .white-button {
@@ -61,8 +60,9 @@
 .btn-first {
   background-color: #1BBB99;
   color: #FFFFFF;
-  border: none;
-  padding: 10px;
+  border: 2px solid #1BBB99;
+  // do not change border
+
   margin-bottom: 10px;
   margin-top: 10px;
 }
@@ -70,12 +70,12 @@
 .btn-first:hover {
   color: #FFFFFF;
   opacity: 0.9;
-  transform: scale(1.01);
+  transform: scale(1.02);
 }
 
 .btn-first:active:focus {
   color: #FFFFFF;
-  transform: scale(1.0);
+
   border-color: transparent;
   outline: none;
 }
@@ -116,8 +116,6 @@
 }
 
 .back-btn {
-  margin: 10px;
-  margin-bottom: 5px;
   color: #292D33;
   &:hover {
     text-decoration: none;
@@ -125,28 +123,49 @@
   }
 }
 
-.btn-ghost {
-  // border-radius: 5px;
-  color: #292D33;
-  opacity: 0.8;
-  font-weight: lighter;
-  background-color: #FFFFFF;
-  border: 1px solid #292D33;
+.back {
+  margin-top: 10px;
   &:hover {
-    opacity: 1px;
-    color: #218A78;
-    border: 1px solid #218A78;
-    background-color: #FFFFFF;
+    opacity: 0.8;
   }
 }
 
-.btn-ghost:active:focus {
-  background-color: #FFFFFF;
-}
-.btn-ghost:active {
-  background-color: #FFFFFF;
+.navigation-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
-.btn-ghost:focus {
+
+.btn-ghost {
+  // border-radius: 5px;
+  margin: 10px;
+  color: #1BBB99;
   background-color: #FFFFFF;
+  border: 2px solid #1BBB99;
+  &:hover {
+    opacity: 0.9;
+    color: #218A78;
+    transform: scale(1.02);
+  }
 }
+
+.show {
+  width: 200px;
+}
+
+.show-buttons {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  display: flex;
+  justify-content: space-evenly;
+}
+// .btn-ghost:active:focus {
+//   background-color: #FFFFFF;
+// }
+// .btn-ghost:active {
+//   background-color: #FFFFFF;
+// }
+
+// .btn-ghost:focus {
+//   background-color: #FFFFFF;
+// }
