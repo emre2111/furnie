@@ -1,47 +1,45 @@
-<div class="container">
-  <div class="show-product">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row" style="background: linear-gradient(380deg, #00bf970f, #9198e500);">
       <div class="col-xs-12 col-sm-6">
         <div class="product-pic">
-          <img class= "pic" src="<%= @product.photo%> ">
+          <img class="pic" src="<%= @product.photo%> ">
         </div>
       </div>
-      <div class="col-xs-12 col-sm-6">
+      <div class="col-xs-12 col-sm-6" style="padding-right: 0;">
         <div class="product-description ">
           <div class="description">
             <div class="product-title">
               <h1><%= @product.name %></h1>
             </div>
             <h3><strong><%= humanized_money_with_symbol(@product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %> in total</strong></h3>
-            <p>From
+            <p class="range-item">From
+              <strong>
               <%= @booking.starts_at.strftime("%B") %>
               <%= @booking.starts_at.day %>,
               <%= @booking.starts_at.year %>
-
+              </strong>
               until
+              <strong>
               <%= @booking.ends_at.strftime("%B") %>
               <%= @booking.ends_at.day %>,
-              <%= @booking.ends_at.year %></p>
+              <%= @booking.ends_at.year %>
+              </strong></p>
 
-
-              <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> ( <%= humanized_money_with_symbol(@product.price) %> per day )</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
-              <div class="show-buttons"><%= button_to "Add to cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-first show btn-to-cart", remote: true %>
+              <p>Total renting period:</p> <p class="number-show"><strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> ( <%= humanized_money_with_symbol(@product.price) %> per day )</p>
+              <div class="show-buttons"><%= button_to "Add to cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-first show btn-to-cart" %>
 
 
                 <%= link_to "Go to cart", booking_path(@booking), class: "btn btn-ghost show" %></div>
                 <div class="navigation-buttons">
                   <div class="back">
-                    <%= link_to "< Back to search results", booking_products_path(@booking), class: "back-btn" %>
-                  </div>
-                  <div class="back">
-                    <%= link_to "Go random instead >", randomize_booking_path(@booking), class: "back-btn" %>
+                    <p>Cant Find What You Look For?</p>
+                    <%= link_to "Try Randomize", randomize_booking_path(@booking), class: "back-btn" %>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+
     </div>
 
