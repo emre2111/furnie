@@ -46,7 +46,9 @@
               <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong></p>
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus architecto, odio veniam. In necessitatibus, </p>
               <div>
-                <%= button_to "Add to your cart", booking_product_random_booking_items_path(@booking, product), class: "btn btn-first btn-random", remote: true %>
+
+                <%= button_to "Add to your cart", booking_product_random_booking_items_path(@booking, product), class: "btn btn-first btn-random btn-to-cart", remote: true %>
+
 
               </div>
             </div>
