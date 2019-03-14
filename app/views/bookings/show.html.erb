@@ -12,7 +12,9 @@
   <div class="booking-flex">
     <div class="booking-flex-item">
       <% @items.each do |item| %>
-      <%=link_to 'Delete', booking_product_booking_item_path(@booking, item.product, item), method: :delete %>
+        <%=link_to booking_product_booking_item_path(@booking, item.product, item), method: :delete, class: "btn-remove" do %>
+          <i class="far fa-times-circle"></i>
+        <% end %>
         <div class="booking-item-container">
           <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
           <div class="show-desc">
