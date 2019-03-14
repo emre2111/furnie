@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
     @products = @products.where(style: params[:style]) if params[:style].present? unless params[:style] == "all"
     @products = @products.where(material: params[:material]) if params[:material].present? unless params[:material] == "all"
     @count = @products.count
-    @products = @products.order("products.name").page(params[:page])
+    @products = @products.order("RANDOM()").page(params[:page])
     # #pagination
     # order_by_price(params[:order_by_price])
     # order_by_name(params[:order_by_name])
