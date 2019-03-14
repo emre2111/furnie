@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     @products = @products.where(category: params[:category]) if params[:category].present? unless params[:category] == "all"
     @products = @products.where(style: params[:style]) if params[:style].present? unless params[:style] == "all"
     @products = @products.where(material: params[:material]) if params[:material].present? unless params[:material] == "all"
-    # @count = @products.count
+    @count = @products.count
     @products = @products.order("products.name").page(params[:page])
     # #pagination
     # order_by_price(params[:order_by_price])

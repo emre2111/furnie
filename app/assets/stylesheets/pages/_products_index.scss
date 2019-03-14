@@ -7,7 +7,7 @@
     border: solid 1px #00bf97;
     color: #00bf97;
     text-transform: capitalize;
-        color: #a5a5a5;
+    color: #a5a5a5;
     background-color: transparent;
     border: 2px solid #7373733d;
   }
@@ -27,9 +27,11 @@ h2.title {
     padding: 0;
     color: darkgrey;
     text-align: center;
-    margin-bottom: 0;
+    margin-bottom: 10px;
     text-transform: uppercase;
     margin-top: 32px;
+    font-weight: 100;
+
   }
 
 .index-banner {
