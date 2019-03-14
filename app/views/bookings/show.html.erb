@@ -1,6 +1,7 @@
 <div class="container">
   <h4 id="cart-header">Your shopping cart</h4>
   <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> |
+
   From <%= @booking.starts_at.strftime("%B") %>
         <%= @booking.starts_at.day %>,
         <%= @booking.starts_at.year %>
@@ -26,19 +27,72 @@
           </div>
         </div>
         <hr>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
 
-    <div class="payment-sidebar">
-      <h4>Order overview</h4>
-      <div class="payment-detail">
+      <div class="payment-sidebar">
+        <div id="button">
+        </div>
+        <div id="payment-detail">
+          <div class="overview">
+          <h4>Order overview :</h4>
 
-        <p>Subtotal <%= humanized_money_with_symbol(@booking.items.sum { |item| item.product.price } * (@booking.ends_at - @booking.starts_at + 1).to_i) %></p>
-        <p>Delivery, setup and pickup €50.00</p>
-        <hr>
-        <strong><p>Total <%= humanized_money_with_symbol(@booking.total_amount) %></p></strong>
-        <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-first btn-landing" %>
+          <p>Subtotal <%= humanized_money_with_symbol(@booking.items.sum { |item| item.product.price } * (@booking.ends_at - @booking.starts_at + 1).to_i) %></p>
+          <p>Delivery, setup and pickup €50.00</p>
+          <hr>
+          <h4>Total <%= humanized_money_with_symbol(@booking.total_amount) %></h4>
+          <div class="btn btn-first" id="rentnow">Rent now</div>
+          </div>
+          <!-- <#%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-first" %> -->
+          <!-- </div> -->
+        </div>
+      </div>
+      <div id="payment-container">
+        <div class="credit-card">
+          <h4>Purchase</h4>
+          <%= form_tag booking_payments_path(@booking) do %>
+            <article>
+              <label class="amount">
+                <span>Total amount: <%= humanized_money_with_symbol(@booking.total_amount) %></span>
+              </label>
+            </article>
+            <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-name="Furnie - Furniture Rental"
+              data-email="<%= current_user.email %>"
+              data-description="Renting furniture until <%= @booking.ends_at %>"
+              data-amount="<%= @booking.total_amount_cents %>"
+              data-currency="<%= @booking.total_amount.currency %>">
+            </script>
+          <% end %>
+        </div>
+        <div class="btn" id="back">Back to card</div>
+
       </div>
     </div>
   </div>
+
 </div>
+<script>
+  x = document.getElementById("rentnow")
+  y = document.getElementById("payment-container")
+  z = document.getElementById("payment-detail")
+  b = document.getElementById("back")
+  x.addEventListener("click", function(){
+    y.style.display = "block";
+    x.style.display = "none";
+    z.style.display = "none";
+    b.style.display = "block";
+  })
+</script>
+
+<script>
+  x = document.getElementById("back")
+  y = document.getElementById("payment-container")
+  z = document.getElementById("payment-detail")
+  x.addEventListener("click", function(){
+    y.style.display = "none";
+    x.style.display = "block";
+    z.style.display = "block";
+  })
+</script>

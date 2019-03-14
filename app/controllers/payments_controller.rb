@@ -2,6 +2,11 @@ class PaymentsController < ApplicationController
   before_action :set_booking
 
   def new
+
+     respond_to do |format|
+      format.html { render 'payments/new' }
+      format.js  # <-- will render `app/views/payments/new.js.erb`
+    end
   end
 
   def create
