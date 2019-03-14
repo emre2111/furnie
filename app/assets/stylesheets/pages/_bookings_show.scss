@@ -6,6 +6,9 @@
   flex: 0 0 70%;
   position: relative;
 }
+.booking-flex-item-2 {
+  position: relative;
+}
 
 .booking-item-container {
   display: flex;
@@ -33,6 +36,10 @@
 
 .payment-detail {
   font-weight: lighter;
+}
+.payment-detail:hover {
+  transform: rotateY(180deg);
+  -webkit-transition: -webkit-transform 1s ease-in;
 }
 
 .btn-remove {
