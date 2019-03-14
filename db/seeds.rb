@@ -29,8 +29,6 @@ puts 'Scraping furniture products, creating rooms and items.....'
 require './lib/tasks/scrape'
 
 
-
-products = []
   ############################     Beds     #######################
   material = ["realleather", "textile", "solidwood", "syntheticleather"]
   style = ["nature", "industrial", "scandinavian", "modern"]

@@ -18,7 +18,7 @@
         <%= render "./shared/date_form" %>
       </div>
        <div class="product-cards" id="products-all">
-         <% @products.each do |product| %>
+         <% @products.shuffle.each do |product| %>
            <%= render 'shared/card', product: product, booking: @booking %>
          <% end %>
        </div>

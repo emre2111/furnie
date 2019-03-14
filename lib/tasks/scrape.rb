@@ -30,7 +30,7 @@ def scraper(url)
       :description => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore repellendus suscipit ullam, autem quo dolorem eum assumenda. Et perspiciatis odio debitis ipsum, harum fugit, quaerat exercitationem porro provident, commodi sapiente?'
     }
   end
-  outputs
+  outputs_rand = outputs.shuffle
 end
 
 
