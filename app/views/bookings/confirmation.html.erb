@@ -1,15 +1,24 @@
 <div class="container">
-  <h3>Thank you very much for your order!</h3>
-  <h5>A confirmation has been sent to <%= current_user.email %></h5>
-  <p>Your furniture will de delivered to your address on /DATE/ </p>
-  <p>You are renting furniture from
-        <strong><%= @booking.starts_at.strftime("%B") %>
-          <%= @booking.starts_at.day %>,
-          <%= @booking.starts_at.year %></strong>
-        until
-        <strong><%= @booking.ends_at.strftime("%B") %>
-           <%= @booking.ends_at.day %>,
-           <%= @booking.ends_at.year %></strong> </p>
+  <div class="confirmation-container">
+    <div class="confirmation-message">
+      <h1>Thank you very much for <strong class="half-highlight">your order!</strong></h1>
+      <p>We are happy that you found the furniture you like!</p>
+      <h5>A confirmation has been sent to <%= current_user.email %></h5>
+      <p>Your furniture will de delivered to your address on /DATE/ </p>
+      <p>You are renting furniture from
+            <strong><%= @booking.starts_at.strftime("%B") %>
+              <%= @booking.starts_at.day %>,
+              <%= @booking.starts_at.year %></strong>
+            until
+            <strong><%= @booking.ends_at.strftime("%B") %>
+               <%= @booking.ends_at.day %>,
+               <%= @booking.ends_at.year %></strong>
+      </p>
+    </div>
+    <div class="confirmation-image">
+      <%= image_tag "confirmation.svg", height: 350 %>
+    </div>
+  </div>
 
   <div class="confirm-details">
     <div class="order-confirmation">
