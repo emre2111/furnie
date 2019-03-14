@@ -4,6 +4,7 @@
 
 .booking-flex-item {
   flex: 0 0 70%;
+  position: relative;
 }
 
 .booking-item-container {
@@ -32,4 +33,10 @@
 
 .payment-detail {
   font-weight: lighter;
+}
+
+.btn-remove {
+  color: #218A78;
+  position: absolute;
+  right: 150px;
 }
