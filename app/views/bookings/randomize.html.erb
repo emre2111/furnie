@@ -10,7 +10,7 @@
     <div class="nav" role="tablist">
       <% @random.each_with_index do |product, index| %>
       <div role="presentation" class="<%= "active" if index.zero? %>">
-        <div class="random-card col-xs-4" href="#product-<%= product.id %>" aria-controls="product-<%= product.id %>" role="tab" data-toggle="tab">
+        <div class="random-card col-xs-4 <%= "active-border" if index.zero? %>" href="#product-<%= product.id %>" aria-controls="product-<%= product.id %>" role="tab" data-toggle="tab">
           <div class="card-container card-container-random">
             <div class="card-category" style="background-image: url('<%=  product.photo %>')">
               <!-- <div class="card-icon"><i class="far fa-heart"></i></div> -->
