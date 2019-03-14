@@ -4,7 +4,7 @@
       <h1>Thank you very much for <strong class="half-highlight">your order!</strong></h1>
       <p>We are happy that you found the furniture you like!</p>
       <h5>A confirmation has been sent to <%= current_user.email %></h5>
-      <p>Your furniture will de delivered to your address on /DATE/ </p>
+      <p>Your furniture will de delivered to your address on <%= @booking.starts_at.strftime("%B") %> <%= @booking.starts_at.day %>, <%= @booking.starts_at.year %></p>
       <p>You are renting furniture from
             <strong><%= @booking.starts_at.strftime("%B") %>
               <%= @booking.starts_at.day %>,
@@ -48,7 +48,7 @@
     </div>
 
     <div class="renting-item">
-      <strong><p class="confirm-header">Your renting item</p></strong>
+      <strong><p class="confirm-header">Your rented items</p></strong>
       <hr>
       <div class="order-items">
         <% @items.each do |item| %>
