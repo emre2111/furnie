@@ -1,4 +1,4 @@
-<% category_options.each do |option| %>
+<% category_options.sort.each do |option| %>
   <% checked = params[:category] == option %>
   <label for="category<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label"><%= option %></label>
   <input <%= 'checked' if checked %> type="radio" class="hidden" id="category<%= option %>" value="<%= option %>" name="category"><br>

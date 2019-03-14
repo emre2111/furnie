@@ -1,3 +1,5 @@
+// to make user allow to click on label (click label -> click hiding submit button)
+
 function sidebar(){
   const sidebarForm = document.querySelector(".form-sidebar");
 
