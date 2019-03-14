@@ -29,7 +29,7 @@
         <hr>
         <% end %>
       </div>
-
+    <div class="booking-flex-item-2">
       <div class="payment-sidebar">
         <div id="button">
         </div>
@@ -51,6 +51,7 @@
         <div class="credit-card">
           <h4>Purchase</h4>
           <%= form_tag booking_payments_path(@booking) do %>
+          <hr>
             <article>
               <label class="amount">
                 <span>Total amount: <%= humanized_money_with_symbol(@booking.total_amount) %></span>
@@ -66,8 +67,9 @@
             </script>
           <% end %>
         </div>
-        <div class="btn" id="back">Back to card</div>
+        <div class="btn btn-back" id="back"><i class="fas fa-undo"></i> Back to shopping cart</div>
 
+      </div>
       </div>
     </div>
   </div>
@@ -79,10 +81,10 @@
   z = document.getElementById("payment-detail")
   b = document.getElementById("back")
   x.addEventListener("click", function(){
-    y.style.display = "block";
-    x.style.display = "none";
-    z.style.display = "none";
-    b.style.display = "block";
+    y.classList.add("payment-container-active");
+    x.style.opacity = 0;
+    z.style.opacity = 0;
+    b.style.opacity = 1;
   })
 </script>
 
@@ -91,8 +93,8 @@
   y = document.getElementById("payment-container")
   z = document.getElementById("payment-detail")
   x.addEventListener("click", function(){
-    y.style.display = "none";
-    x.style.display = "block";
-    z.style.display = "block";
+    y.classList.remove("payment-container-active");
+    x.style.opacity = 1;
+    z.style.opacity = 1;
   })
 </script>
