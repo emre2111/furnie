@@ -1,0 +1,7 @@
+
+function addPayment(paymentHTML) {
+  const payment = document.getElementById('new_payment');
+  payment.insertAdjacentHTML('beforeend', paymentHTML);
+}
+
+addPayment('<%= render "payments/new" %>');
