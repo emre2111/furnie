@@ -1,15 +1,15 @@
 <div class="container">
   <h3>Thank you very much for your order!</h3>
   <h5>A confirmation has been sent to <%= current_user.email %></h5>
-  <h5>Your furniture will de delivered to your address on /DATE/ </h5>
-  <h5>You are renting furniture from
-        <%= @booking.starts_at.strftime("%B") %>
-        <%= @booking.starts_at.day %>,
-        <%= @booking.starts_at.year %>
+  <p>Your furniture will de delivered to your address on /DATE/ </p>
+  <p>You are renting furniture from
+        <strong><%= @booking.starts_at.strftime("%B") %>
+          <%= @booking.starts_at.day %>,
+          <%= @booking.starts_at.year %></strong>
         until
-        <%= @booking.ends_at.strftime("%B") %>
-        <%= @booking.ends_at.day %>,
-        <%= @booking.ends_at.year %> </h5>
+        <strong><%= @booking.ends_at.strftime("%B") %>
+           <%= @booking.ends_at.day %>,
+           <%= @booking.ends_at.year %></strong> </p>
 
   <div class="confirm-details">
     <div class="order-confirmation">
@@ -18,7 +18,8 @@
       <div class="order-info">
         <div class="order-address">
           <strong><p>Delivery address</p></strong>
-          <p><%= current_user.address %></p>
+          <p>Marthashof 12<br>
+            10435 Berlin</p>
         </div>
         <div class="order-num">
           <strong><p>Order number</p></strong>
@@ -26,7 +27,9 @@
         </div>
         <div class="order-date">
           <strong><p>Order date</p></strong>
-          <%= Date.today %>
+          <%= Date.today.strftime("%B") %>
+          <%= Date.today.day %>,
+          <%= Date.today.year %>
         </div>
         <div class="order-payment">
           <strong><p>Total payment</p></strong>
