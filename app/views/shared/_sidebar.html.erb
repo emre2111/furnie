@@ -16,9 +16,9 @@
       <div class="form-tag room-category">
         <div class="label_tag search-label">
           <%= label_tag(:product_room, "ROOM") %>
-          <%= image_tag "add.svg", height: 16, class: "add-button" %>
+          <%= image_tag "add.svg", height: 16, class: "add-button btn_rotated" %>
         </div>
-        <div class="select_tag" id="product-room">
+        <div class="select_tag select_show" id="product-room">
           <%= render 'shared/sidebar-product-room', product_room_options: product_room_options %>
         </div>
       <hr>
