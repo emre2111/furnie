@@ -82,24 +82,36 @@ label {
   left: 190px;
   position: absolute;
   left: 0;
-  top: 25%;
+  top: 23%;
   width: 100%;
   text-align: center;
-
-
 }
 
 .landingpage-header h1 {
   color: #FFFFFF;
   font-family: 'Prata', sans-serif;
-  font-size: 70px;
+  font-size: 87px;
+  margin-bottom: 0px;
+  font-family: playball, cursive;
+  margin-block-end: 15px;
 }
 
 .landingpage-para {
 
-  font-size: 23px;
+  font-size: 20px;
   color: #FFFFFF;
   font-weight: lighter;
+  margin-bottom: 0px;
+}
+
+.welcome-landing {
+    color: #00be97;
+    background: white;
+    padding: 4px;
+    padding-right: 13px;
+    padding-left: 13px;
+    text-align: center;
+    font-weight: lighter;
 }
 
 .form-group .form-control-label{
@@ -110,8 +122,6 @@ label {
 }
 
 .form {
-  padding-top: 10px;
-
 }
 
 .form-control {
@@ -138,6 +148,24 @@ a.login {
   border-color: #1BBB99 !important;
 }
 
+.btn-landing {
+  padding: 9px;
+}
 
+.half-highlight {
+  background-image: linear-gradient(to right, transparent 50%, #00be97 50%);
+  background-origin: 0;
+  background-size: 200% 50%;
+  background-repeat: repeat-x;
+  background-position: -100% 100%;
+  transition: background-position 1s;
+  font-weight: 500;
+}
+
+.half-highlight:hover {
+  background-position: 0% 100%;
+  background-repeat: repeat-x;
+  background-color: transparent;
+}
 
 

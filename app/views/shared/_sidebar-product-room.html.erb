@@ -1,4 +1,6 @@
-<% product_room_options.each do |option| %>
+<!-- To iterate over options to put label and input (hidden radio button) -->
+
+<% product_room_options.sort.each do |option| %>
   <% checked = params[:product_room] == option %>
   <label for="product_room<%= option %>" data-product-room= "<%= option %>" class="<%= "active" if checked %> category-label" ><%= option %></label>
   <input <%= 'checked' if checked %> type="radio" class="hidden" id="product_room<%= option %>" value="<%= option %>" name="product_room"><br>

@@ -1,3 +1,5 @@
+// click x and selections to be shown
+
 function searchButton() {
   document.querySelectorAll(".add-button").forEach((button) => {
     button.addEventListener("click", e => {

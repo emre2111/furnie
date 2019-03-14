@@ -1,8 +1,10 @@
-<% category_options = @products.pluck(:category).uniq.sort %>
-<% category_options << "all" %>
+// ajax : showing products without reloading on users selection
 
 <% category_options = @products.pluck(:category).uniq.sort %>
 <% category_options << "all" %>
+
+<% product_room_options = @products.map {|product| product.rooms.pluck(:name) }.flatten.uniq.sort %>
+<% product_room_options << "all" %>
 
 <% style_options = @products.pluck(:style).uniq.sort %>
 <% style_options << "all" %>
@@ -13,6 +15,11 @@
 function refreshProducts(innerHTML) {
   const refreshed = document.getElementById('products-all');
   refreshed.innerHTML = innerHTML;
+}
+
+function refreshProductRoom(innerHTML) {
+  const refreshedRoom = document.getElementById('product-room');
+  refreshedRoom.innerHTML = innerHTML;
 }
 
 function refreshProductCategory(innerHTML) {
@@ -32,6 +39,7 @@ function refreshProductMaterial(innerHTML) {
 
 
 refreshProducts('<%= j render "products/refresh", products: @products %>');
+refreshProductRoom('<%= j render "shared/sidebar-product-room", product_room_options: product_room_options %>');
 refreshProductCategory('<%= j render "shared/sidebar-product-category", category_options: category_options %>');
 refreshProductStyle('<%= j render "shared/sidebar-product-style", style_options: style_options %>');
 refreshProductMaterial('<%= j render "shared/sidebar-product-material", material_options: material_options %>');

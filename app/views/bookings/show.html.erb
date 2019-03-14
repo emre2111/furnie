@@ -1,18 +1,21 @@
 <div class="container">
   <h4 id="cart-header">Your shopping cart</h4>
   <p>Total renting period: <strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> |
-    From <%= @booking.starts_at.strftime("%B") %>
-    <%= @booking.starts_at.day %>,
-    <%= @booking.starts_at.year %>
-    until
-    <%= @booking.ends_at.strftime("%B") %>
-    <%= @booking.ends_at.day %>,
-    <%= @booking.ends_at.year %></p>
-    <hr>
-    <div class="booking-flex">
-      <div class="booking-flex-item">
-        <% @items.each do |item| %>
-        <%=link_to 'Delete', booking_product_booking_item_path(@booking, item.product, item), method: :delete %>
+
+  From <%= @booking.starts_at.strftime("%B") %>
+        <%= @booking.starts_at.day %>,
+        <%= @booking.starts_at.year %>
+        until
+        <%= @booking.ends_at.strftime("%B") %>
+        <%= @booking.ends_at.day %>,
+        <%= @booking.ends_at.year %></p>
+  <hr>
+  <div class="booking-flex">
+    <div class="booking-flex-item">
+      <% @items.each do |item| %>
+        <%=link_to booking_product_booking_item_path(@booking, item.product, item), method: :delete, class: "btn-remove" do %>
+          <i class="far fa-times-circle"></i>
+        <% end %>
         <div class="booking-item-container">
           <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
           <div class="show-desc">
@@ -39,7 +42,6 @@
           <hr>
           <h4>Total <%= humanized_money_with_symbol(@booking.total_amount) %></h4>
           <div class="btn btn-first" id="rentnow">Rent now</div>
-
           </div>
           <!-- <#%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-first" %> -->
           <!-- </div> -->
@@ -65,6 +67,7 @@
           <% end %>
         </div>
         <div class="btn" id="back">Back to card</div>
+
       </div>
     </div>
   </div>
