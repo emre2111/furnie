@@ -3,10 +3,22 @@
     text-align: center;
   }
   input.btn-first {
-    background-color: white;
+    background-color: transparent;
     border: solid 1px #00bf97;
     color: #00bf97;
     text-transform: capitalize;
+        color: #a5a5a5;
+    background-color: transparent;
+    border: 2px solid #7373733d;
+  }
+}
+
+.form-index {
+  .form {
+
+  }
+  input.btn-first:hover {
+    color: #1aba99;
   }
 }
 
