@@ -1,3 +1,7 @@
+<div class="conf_modal">
+  <p>Your Item has been added</p>
+</div>
+
 <div class="container-fluid">
     <div class="row" style="background: linear-gradient(380deg, #00bf970f, #9198e500);">
       <div class="col-xs-12 col-sm-6">
@@ -26,7 +30,8 @@
               </strong></p>
 
               <p>Total renting period:</p> <p class="number-show"><strong><%= (@booking.ends_at - @booking.starts_at + 1).to_i %> days</strong> ( <%= humanized_money_with_symbol(@product.price) %> per day )</p>
-              <div class="show-buttons"><%= button_to "Add to cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-first show btn-to-cart" %>
+              <div class="show-buttons">
+                <%= button_to "Add to cart", booking_product_booking_items_path(@booking, @product), class: "btn btn-first show btn-to-cart btn-random", remote: true %>
 
 
                 <%= link_to "Go to cart", booking_path(@booking), class: "btn btn-ghost show" %></div>
