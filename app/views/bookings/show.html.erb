@@ -35,7 +35,7 @@
         <p>Delivery, setup and pickup €50.00</p>
         <hr>
         <strong><p>Total <%= humanized_money_with_symbol(@booking.total_amount) %></p></strong>
-        <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-first" %>
+        <%= link_to "Rent now", new_booking_payment_path(@booking), class: "btn btn-first btn-landing" %>
       </div>
     </div>
   </div>
