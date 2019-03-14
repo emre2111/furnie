@@ -7,7 +7,6 @@
 <div class="container-random">
  <div class="col-xs-6">
   <div class="row">
-    <br>
     <div class="nav" role="tablist">
       <% @random.each_with_index do |product, index| %>
       <div role="presentation" class="<%= "active" if index.zero? %>">
@@ -29,7 +28,7 @@
 </div>
 
 <div class="col-xs-6">
-  <div class="row">
+  <div class="row row-baner">
     <div class="tab-content">
       <% @random.each_with_index do |product, index| %>
       <div role="tabpanel" class="tab-pane <%= "active" if index.zero? %>" id="product-<%= product.id %>" >

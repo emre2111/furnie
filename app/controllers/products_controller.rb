@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
     @products = @products.where(category: params[:category]) if params[:category].present? unless params[:category] == "all"
     @products = @products.where(style: params[:style]) if params[:style].present? unless params[:style] == "all"
     @products = @products.where(material: params[:material]) if params[:material].present? unless params[:material] == "all"
+    # @count = @products.count
     @products = @products.order("products.name").page(params[:page])
     # #pagination
     # order_by_price(params[:order_by_price])
@@ -24,35 +25,35 @@ class ProductsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
   end
 
-  private
+  # private
 
-  def order_by_price(order)
-    if order == "lowest to highest"
-      @products = @products.sort_by { |p| p.price_cents }
-    elsif order == "highest to lowest"
-      @products = @products.sort_by { |p| p.price_cents }.reverse
-    else
-      @products
-    end
-  end
+  # def order_by_price(order)
+  #   if order == "lowest to highest"
+  #     @products = @products.sort_by { |p| p.price_cents }
+  #   elsif order == "highest to lowest"
+  #     @products = @products.sort_by { |p| p.price_cents }.reverse
+  #   else
+  #     @products
+  #   end
+  # end
 
-  def order_by_name(order)
-    if order == "A..Z"
-      @products = @products.sort_by { |p| p.name }
-    elsif order == "Z..A"
-      @products = @products.sort_by { |p| p.name }.reverse
-    else
-      @products
-    end
-  end
+  # def order_by_name(order)
+  #   if order == "A..Z"
+  #     @products = @products.sort_by { |p| p.name }
+  #   elsif order == "Z..A"
+  #     @products = @products.sort_by { |p| p.name }.reverse
+  #   else
+  #     @products
+  #   end
+  # end
 
-  def order_by_category(order)
-    if order == "A..Z"
-      @products = @products.sort_by { |p| p.category }
-    elsif order == "Z..A"
-      @products = @products.sort_by { |p| p.category }.reverse
-    else
-      @products
-    end
-  end
+  # def order_by_category(order)
+  #   if order == "A..Z"
+  #     @products = @products.sort_by { |p| p.category }
+  #   elsif order == "Z..A"
+  #     @products = @products.sort_by { |p| p.category }.reverse
+  #   else
+  #     @products
+  #   end
+  # end
 end
