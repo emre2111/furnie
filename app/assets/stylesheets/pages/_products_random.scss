@@ -16,21 +16,42 @@
   padding-bottom: 5px;
 }
 
+ @media (min-height: 721px) {
+  .product-desc-random {
+    text-align: center;
+    padding-bottom: 10px;
+  }
+ }
+
 .banner-random {
   display: inline-block;
   .btn {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
+    margin-top: 15px;
   }
 }
 
 .container-random .card-category {
-height: 115px;
+height: 130px;
 }
+
+ @media (min-height: 721px) {
+  .container-random .card-category {
+  height: 195px;
+}
+ }
 
 .container-random .banner-random-img {
   width: 100%;
   height: 180px;
 }
+
+ @media (min-height: 721px) {
+  .container-random .banner-random-img {
+    width: 100%;
+    height: 315px;
+  }
+ }
 
 .random-card .card-container {
   margin-block-end: 5px;
@@ -91,8 +112,17 @@ height: 115px;
   padding: 15px;
   display: flex;
   justify-content: space-between;
-  padding-top: 3px;
 }
+
+@media (min-height: 721px) {
+  .banner-business-model {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+  }
+ }
+
 
 .banner-business-model-item {
   width: 200px;
@@ -125,6 +155,18 @@ h2.index {
     margin-bottom: 20px;
     margin-top: 15px;
 }
+
+@media (min-height: 721px) {
+  h2.index {
+      font-size: 30px;
+      padding: 10px;
+      text-align: center;
+      font-weight: 400;
+      color: #8a8a8a;
+      margin-bottom: 20px;
+      margin-top: 20px;
+  }
+ }
 
 .row-baner {
   margin-top: -18px;
