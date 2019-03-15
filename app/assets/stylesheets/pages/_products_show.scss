@@ -6,7 +6,9 @@
 }
 .product-pic{
     align-items: center;
+    height: 80vh;
     display: flex;
+    padding: 70px;
     justify-content: center;
     img {
       z-index: -30;
@@ -14,8 +16,8 @@
 }
 
 .pic {
-  height: 80%;
-  width: 80%;
+  height: 65%;
+  width: 65%;
 }
 
 .product-description {
