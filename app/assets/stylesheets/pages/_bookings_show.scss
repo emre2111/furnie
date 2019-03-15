@@ -34,6 +34,11 @@
   margin-left: 50px;
 }
 
+.item-desc h2 {
+  color: #6E6E6E;
+  margin-top: 0px;
+}
+
 .payment-detail {
   font-weight: lighter;
 }
@@ -46,4 +51,8 @@
   color: #218A78;
   position: absolute;
   right: 150px;
+}
+
+.overview p {
+    font-size: 18px !important;
 }
