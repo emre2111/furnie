@@ -1,0 +1,5 @@
+meta_product_name: "furnie"
+meta_title: "furnie - Rent furniture "
+meta_description: "Furnish your apartment Fast & Simple"
+meta_image: "homepage.jpg" # should exist in `app/assets/images/`
+#twitter_account: "@product_twitter_account"   # required for Twitter Cards
