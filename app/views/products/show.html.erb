@@ -15,7 +15,7 @@
             <div class="product-title">
               <h1><%= @product.name %></h1>
             </div>
-            <h3><strong><%= humanized_money_with_symbol(@product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %> in total</strong></h3>
+            <h3><%= humanized_money_with_symbol(@product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %> in total</h3>
             <p class="range-item">From
               <strong>
               <%= @booking.starts_at.strftime("%B") %>

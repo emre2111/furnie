@@ -20,9 +20,8 @@
           <div class="show-photo-container" style="background-image: url(<%= item.product.photo %>)"></div>
           <div class="show-desc">
             <div class="item-desc">
-              <strong><%= item.product.name %></strong><br>
-              <p>some description here</p><br>
-              <p><%= humanized_money_with_symbol(item.product.price) %> per day</p>
+              <h2><strong><%= item.product.name %></strong><br></h2>
+              <p> <strong><%= humanized_money_with_symbol(item.product.price * (@booking.ends_at - @booking.starts_at + 1).to_i) %></strong> in total</p><br>
             </div>
           </div>
         </div>
